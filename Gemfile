@@ -52,6 +52,8 @@ gem 'slim_lint', '~> 0.29.0'
 gem 'rubocop', '~> 1.66', require: false
 gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'scss_lint', require: false
+gem 'pg', '~> 1.5', '>= 1.5.6'
+gem 'devise', '~> 4.9', '>= 4.9.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
