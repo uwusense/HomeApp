@@ -1,0 +1,52 @@
+@import 'variables';
+
+.session-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.session-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+
+  &__field {
+    input {
+      height: 40px;
+      width: 300px;
+      font-size: 20px;
+    }
+  }
+}
+
+.session__actions {
+  display: flex;
+  justify-content: center;
+
+  &-submit {
+    margin: 10px 0 30px 0;
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+  }
+}

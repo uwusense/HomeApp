@@ -1,0 +1,26 @@
+.header
+  .header__logo
+    = link_to 'Youbuild', root_path
+  .header-content
+    .header-content__search
+      = form_with url: root_path, method: :get, local: true do |f|
+        = f.search_field :query, placeholder: 'Search pre-owned furniture & building materials', class: 'search-input'
+        button type='submit'
+          = ic_icon('magnifying-glass', class: "search-button")
+  .header-content-right
+    = link_to 'Start selling', root_path, class: 'header-content-right__selling'
+    .header-content-right__actions
+      = link_to root_path do 
+        = ic_icon('star')
+      = link_to root_path, data: { toggle_button: '#profile_menu_box', toggle_class: '.profile_menu--active' } do 
+        = ic_icon('person')
+      = link_to root_path do
+        = ic_icon('cart')
+#profile_menu_box.profile_menu__wrapper
+  .profile_menu__content
+    - if user_signed_in?
+      = button_to 'Logout', destroy_user_session_path, method: :delete
+    - else
+      = link_to 'Register', new_user_registration_path
+      = link_to 'Login', new_user_session_path
+= render 'layouts/header/navigation'

@@ -1,0 +1,58 @@
+@import 'variables';
+
+.scroll_menu {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.scroll_menu_wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll_menu_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 1280px;
+  padding: 10px 0;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 10px;
+  }
+}
+
+.scroll_menu__button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+
+  &--active {
+    background-color: red;
+  }
+}
+
+.scroll_menu_item {
+  flex-shrink: 0;
+  border: .5px solid red;
+  margin-right: 10px;
+  width: 200px;
+  height: 320px;
+  box-sizing: border-box;
+
+  &__photo {
+    border: .5px solid $black;
+    width: 100%;
+    height: 200px;
+  }
+}

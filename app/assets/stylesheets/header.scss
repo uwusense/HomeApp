@@ -1,0 +1,166 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+
+  @media (max-width: $m-width) {
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    margin-bottom: 10px;
+  }
+}
+
+.header__logo {
+  font-size: 50px;
+  margin-left: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $blue;
+  flex: 1;
+
+  a,
+  a:active,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  flex: 2;
+
+  &__search {
+    background-color: $almond;
+    border: 1px solid $almond;
+    border-radius: 999px;
+    padding: 0 10px;
+    position: relative;
+    width: 410px;
+
+    .search-input {
+      background-color: $almond;
+      color: $white;
+      margin-left: 20px;
+      padding: 8px 0;
+      font-size: 1em;
+      line-height: 20px;
+      width: 360px;
+      border: none;
+
+      &::placeholder {
+        color: $white;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    
+    button {
+      background: none;
+      border: none;
+      color: $white;
+      font-size: 1.2em;
+      cursor: pointer;
+      position: absolute;
+      top: 6px;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+
+  @media(max-width: $m-width) {
+    width: 300px;
+
+    .search-input {
+      width: 250px;
+    }
+
+    form {
+      width: 300px;
+    }
+  }
+
+  form {
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
+
+.header-content-right {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+
+  &__selling {
+    height: 38px;
+    background: $blue;
+    border-radius: 999px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 138px;
+    border: 0;
+    letter-spacing: 1px;
+    color: $white;
+    text-decoration: none;
+    margin-right: 10px;
+    overflow: hidden;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    a {
+      color: $cocoa;
+      text-decoration: none;
+      height: 30px;
+    }
+
+    i {
+      font-size: 30px;
+    }
+  }
+}
+
+.profile_menu__wrapper {
+  display: none;
+  box-shadow: 0 1px 5px $black;
+  position: absolute;
+  right: 10px;
+  width: 200px;
+  z-index: 5;
+  background-color: $white;
+}
+
+.profile_menu__content {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+  }
+}

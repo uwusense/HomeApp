@@ -1,0 +1,47 @@
+@import 'variables';
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: $default-font;
+  background-color: $default-background;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .content {
+    margin: 0 200px
+  }
+}
+
+.main_container {
+  flex: 1;
+}
+
+.footer {
+  margin: 0 auto;
+  width: 100%;
+  background-color: $cloud;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+@media (max-width: $m-width) {
+  .container {
+    padding: 10px;
+
+    .content {
+      margin: 0 10px
+    }
+  }
+
+  .footer {
+    height: 150px;
+  }
+}

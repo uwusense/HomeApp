@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'coffee-script', '~> 2.4', '>= 2.4.1'
+gem 'coffee-rails'
 gem 'i18n'
 gem 'coffeelint', '~> 1.16', '>= 1.16.1'
 gem 'slim_lint', '~> 0.29.0'
@@ -54,6 +55,10 @@ gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'scss_lint', require: false
 gem 'pg', '~> 1.5', '>= 1.5.6'
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'sassc-rails', '~> 2.1'
+gem 'sassc', '~> 2.4'
+gem 'jquery-rails', '~> 4.4'
+gem 'rails-assets-underscore', source: 'https://rails-assets.org'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,0 +1,16 @@
+.session-wrapper
+  h2 Sign in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .session-input
+      = f.label :email
+      .session-input__field
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      br/
+      = f.label :password
+      .session-input__field
+        = f.password_field :password, autocomplete: "current-password"
+
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "Forgot your password?", new_password_path(resource_name)
+    .session__actions
+      = f.submit "Sign in", class: "session__actions-submit"

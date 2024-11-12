@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    = render 'layouts/header/head_content'
+    = render 'layouts/header/header'
+  
+  body
+    .container
+      .main_container
+        .content
+            = yield
+        
+      .footer_container
+        .footer
+          = render 'layouts/footer/footer'
+            
+        = yield :js_templates if content_for?(:js_templates)

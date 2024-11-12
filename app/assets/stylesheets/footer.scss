@@ -1,0 +1,29 @@
+@import 'variables';
+
+.footer_wrapper {
+  display: flex;
+  color: $white;
+  margin-left: 200px;
+  height: 100%;
+  align-items: center;
+  line-height: .5em;
+
+  .policy {
+
+  }
+
+  .about {
+    margin-left: 100px;
+  }
+}
+
+@media(max-width: $m-width) {
+  .footer {
+    margin: -10px;
+    padding: 10px;
+  }
+
+  .footer_wrapper {
+    margin-left: 10px;
+  }
+}
