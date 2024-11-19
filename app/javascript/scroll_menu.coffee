@@ -63,13 +63,17 @@ class ScrollMenu
     , 400)
 
   handleRegularScrollButton: ($button) =>
+    @isScrolling = true
     @$buttons.removeClass('scroll_menu__button--active')
     $(event.currentTarget).addClass('scroll_menu__button--active')
 
     position = $(event.currentTarget).data('scroll') - 1
     totalMargin = position * @currentItemsToShow * ScrollMenu.RIGHTMARGIN
     scrollToPosition = @itemWidth * @currentItemsToShow * position + totalMargin
-    @$scrollContent.animate({ scrollLeft: scrollToPosition }, 400)
+    @$scrollContent.scrollLeft(scrollToPosition)
+    setTimeout(() =>
+      @isScrolling = false
+    , 400)
 
   getItemsToShow: ->
     itemsToShow = 1
