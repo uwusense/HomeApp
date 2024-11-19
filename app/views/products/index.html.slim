@@ -1,0 +1,16 @@
+h1 All Products
+.table
+  thead
+    tr
+      th Name
+      th Price
+      th Category
+      th Actions
+  tbody
+    - @products.each do |product|
+      tr
+        td = link_to product.name, product_path(product)
+        td = number_to_currency(product.price)
+        td = product.category
+        td
+          = link_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,41 @@
+.catalog_wrapper
+  .catalog_filters
+    .catalog_filters_new_in
+      .catalog_filters_new_in__title
+        = ic_icon('ringing-bell', class: 'catalog_filters_new_in__icon')
+        = I18n.t(:new_in, scope: 'catalog.filters')
+      .catalog_filters_new_in_options
+        .catalog_filters_new_in__option data-filter='new_in' data-value='today'
+          = I18n.t(:today, scope: 'catalog.filters')
+        .catalog_filters_new_in__option data-filter='new_in' data-value='last_7_days'
+          = I18n.t(:last_7_days, scope: 'catalog.filters')
+        .catalog_filters_new_in__option data-filter='new_in' data-value='last_14_days'
+          = I18n.t(:last_14_days, scope: 'catalog.filters')
+        .catalog_filters_new_in__option data-filter='new_in' data-value='all'
+          = I18n.t(:all, scope: 'catalog.filters')
+    .catalog_filters_filter
+      .catalog_filters_filter__title
+        = ic_icon('filter', class: 'catalog_filters_new_in__icon')
+        = I18n.t(:filter, scope: 'catalog.filters')
+      .catalog_filters_filter_options
+        .catalog_filters_filter_option
+          = I18n.t(:price, scope: 'catalog.filters')
+        .catalog_filters_filter_option
+          = I18n.t(:condition, scope: 'catalog.filters')
+        .catalog_filters_filter_option
+          = I18n.t(:availability, scope: 'catalog.filters')
+  .catalog_wrapper--right
+    = sort_options(params[:sort])
+    .catalog_items_wrapper
+      .catalog_items_row
+        - @items.each do |item|
+          -Rails.logger.debug "----item: #{item.inspect}"
+          .catalog_item
+            .catalog_item__photo
+              = item.name
+            .catalog_item__title
+              = item.name
+            .catalog_item__price
+              = item.price
+            .catalog_item__seller
+              = item.username
