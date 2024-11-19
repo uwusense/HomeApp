@@ -21,7 +21,7 @@ class ScrollMenu
     @resizeItems()
 
     @updateButtons()
-    @$buttons = @$scrollMenu.find('[data-scroll]')
+    @$buttons = @$scrollMenu.find('[data-scroll], [data-arrow]')
 
     @scrollTo()
 
@@ -40,14 +40,37 @@ class ScrollMenu
 
   scrollTo: ->
     @$buttons.on 'click', (event) =>
-      @$buttons.removeClass('scroll_menu__button--active')
-      $(event.currentTarget).addClass('scroll_menu__button--active')
+      return if @isScrolling
 
-      position = $(event.currentTarget).data('scroll') - 1
-      totalMargin = position * @currentItemsToShow * ScrollMenu.RIGHTMARGIN
-      scrollToPosition = @itemWidth * @currentItemsToShow * position + totalMargin
-      @$scrollContent.animate { scrollLeft: scrollToPosition }, 400
-  
+      $button = $(event.currentTarget)
+      if $button.data('arrow')
+        @handleArrowScrollButton($button)
+      else
+        @handleRegularScrollButton($button)
+
+  handleArrowScrollButton: ($button) =>
+    @isScrolling = true
+    direction = $button.data('arrow')
+    scrollToPosition = @$scrollContent.scrollLeft()
+    offset = @itemWidth * @currentItemsToShow + ScrollMenu.RIGHTMARGIN
+    if direction == 'left'
+      scrollToPosition -= offset
+    else if direction == 'right'
+      scrollToPosition += offset
+    @$scrollContent.scrollLeft(scrollToPosition)
+    setTimeout(() =>
+      @isScrolling = false
+    , 400)
+
+  handleRegularScrollButton: ($button) =>
+    @$buttons.removeClass('scroll_menu__button--active')
+    $(event.currentTarget).addClass('scroll_menu__button--active')
+
+    position = $(event.currentTarget).data('scroll') - 1
+    totalMargin = position * @currentItemsToShow * ScrollMenu.RIGHTMARGIN
+    scrollToPosition = @itemWidth * @currentItemsToShow * position + totalMargin
+    @$scrollContent.animate({ scrollLeft: scrollToPosition }, 400)
+
   getItemsToShow: ->
     itemsToShow = 1
     for breakpoint in ScrollMenu.BREAKPOINTS
@@ -62,11 +85,19 @@ class ScrollMenu
   updateButtons: ->
     numButtons = Math.ceil(@itemsCount / @currentItemsToShow)
     @$buttonsContainer.empty()
-    for i in [1..numButtons]
-      button = $('<button>').attr('data-scroll', i).text("Page #{i}")
-      button.addClass('scroll_menu__button--item') unless i is 1
-      @$buttonsContainer.append(button)
-    @$buttonsContainer.find('button:first').addClass('scroll_menu__buttton--active')
+
+    if @currentItemsToShow <= 2
+      leftArrow = $('<button>').attr('data-arrow', 'left').text('<')
+      rightArrow = $('<button>').attr('data-arrow', 'right').text('>')
+      leftArrow.addClass('scroll_menu__arrow--left')
+      rightArrow.addClass('scroll_menu__arrow--right')
+      @$buttonsContainer.append(leftArrow).append(rightArrow)
+    else
+      for i in [1..numButtons]
+        button = $('<button>').attr('data-scroll', i).text("Page #{i}")
+        button.addClass('scroll_menu__button--item') unless i is 1
+        @$buttonsContainer.append(button)
+      @$buttonsContainer.find('button:first').addClass('scroll_menu__buttton--active')
 
 
 $('[data-scroll-menu]').each ->
