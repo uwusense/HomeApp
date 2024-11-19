@@ -59,11 +59,13 @@ gem 'sassc-rails', '~> 2.1'
 gem 'sassc', '~> 2.4'
 gem 'jquery-rails', '~> 4.4'
 gem 'rails-assets-underscore', source: 'https://rails-assets.org'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem 'rspec-rails', '~> 7.0.0'
+  gem 'annotate'
 end
 
 group :development do

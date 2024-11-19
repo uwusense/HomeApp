@@ -5,8 +5,10 @@
   flex-direction: row;
   justify-content: space-between;
   height: 100px;
+  margin: 0 40px;
 
   @media (max-width: $m-width) {
+    margin: 0 0;
     flex-direction: column;
     align-items: center;
     height: 170px;
@@ -16,11 +18,12 @@
 
 .header__logo {
   font-size: 50px;
-  margin-left: 40px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: $blue;
-  flex: 1;
+  color: $dark-green;
+  align-items: center;
+  display: flex;
+  font-weight: 700;
 
   a,
   a:active,
@@ -35,6 +38,7 @@
   display: flex;
   align-items: center;
   flex: 2;
+  justify-content: center;
 
   &__search {
     background-color: $almond;
@@ -104,7 +108,7 @@
 
   &__selling {
     height: 38px;
-    background: $blue;
+    background: $dark-green;
     border-radius: 999px;
     box-sizing: border-box;
     cursor: pointer;

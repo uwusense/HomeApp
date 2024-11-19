@@ -1,9 +1,6 @@
-- nav_items = ["New in", "Furniture", "Decor", "Lightning", "Textiles", "Tools", "Building materials", "Hardware", "Plumbing", "Electrical", "Heating & Cooling", "Doors & Windows"]
 .navigation__wrapper
   .navigation__items
-    - nav_items.each do |nav_item|
-      .navigation__item
-        = nav_item
+    = navigation_items
   .navigation__button
     = link_to root_path, data: { toggle_button: '#navigation_dropdown_box', toggle_class: '.navigation_dropdown--active'}
       p Catalog
@@ -14,6 +11,4 @@
 
 #navigation_dropdown_box.navigation_dropdown__wrapper
   .navigation_dropdown__content
-    - nav_items.each do |nav_item|
-      .navigation_dropdown__item
-        = nav_item
+    = navigation_dropdown_items

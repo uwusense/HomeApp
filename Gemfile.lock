@@ -82,6 +82,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -291,6 +294,7 @@ GEM
       tilt
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
+    select2-rails (4.0.13)
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -349,6 +353,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bootsnap
   capybara
   coffee-rails
@@ -370,6 +375,7 @@ DEPENDENCIES
   sassc (~> 2.4)
   sassc-rails (~> 2.1)
   scss_lint
+  select2-rails (~> 4.0, >= 4.0.3)
   selenium-webdriver
   slim (~> 3.0, >= 3.0.6)
   slim_lint (~> 0.29.0)

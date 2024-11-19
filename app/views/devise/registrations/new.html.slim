@@ -9,6 +9,17 @@
       .session-input__field
         = f.email_field :email, autofocus: true, autocomplete: "email" 
       br/
+      = f.label :username
+      .session-input__field
+        = f.text_field :username, autofocus: true
+      br/
+      = f.label :first_name
+      .session-input__field
+        = f.text_field :first_name, autofocus: true
+      = f.label :last_name
+      .session-input__field
+        = f.text_field :last_name, autofocus: true
+      br/
       = f.label :password 
       .session-input__field
         = f.password_field :password, autocomplete: "new-password" 

@@ -45,3 +45,23 @@ body {
     height: 150px;
   }
 }
+
+.sort-box-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  .sort-box-title {
+    margin-right: 10px;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 426px) {
+      font-size: 12px;
+    }
+  }
+}
