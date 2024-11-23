@@ -1,29 +1,42 @@
+.catalog_filters__button
+  = link_to root_path, data: { toggle_button: '#catalog_filters_box', toggle_class: '.catalog_filters__button--active'}
+    | Filters
+
 .catalog_wrapper data-category=@category data-sort=@sort_direction
-  .catalog_filters data-filter-url=filters_catalogs_path
-    .catalog_filters_new_in
-      .catalog_filters_new_in__title
-        = ic_icon('ringing-bell', class: 'catalog_filters_new_in__icon')
-        = I18n.t(:new_in, scope: 'catalog.filters')
-      .catalog_filters_new_in_options
-        .catalog_filters_new_in__option data-filter='new_in' data-value='today'
-          = I18n.t(:today, scope: 'catalog.filters')
-        .catalog_filters_new_in__option data-filter='new_in' data-value='last_7_days'
-          = I18n.t(:last_7_days, scope: 'catalog.filters')
-        .catalog_filters_new_in__option data-filter='new_in' data-value='last_14_days'
-          = I18n.t(:last_14_days, scope: 'catalog.filters')
-        .catalog_filters_new_in__option.catalog_filters_new_in__option--active data-filter='new_in' data-value='all'
-          = I18n.t(:all, scope: 'catalog.filters')
-    .catalog_filters_filter
-      .catalog_filters_filter__title
-        = ic_icon('filter', class: 'catalog_filters_new_in__icon')
-        = I18n.t(:filter, scope: 'catalog.filters')
-      .catalog_filters_filter_options
-        .catalog_filters_filter_option
-          = I18n.t(:price, scope: 'catalog.filters')
-        .catalog_filters_filter_option
-          = I18n.t(:condition, scope: 'catalog.filters')
-        .catalog_filters_filter_option
-          = I18n.t(:availability, scope: 'catalog.filters')
+  .catalog_filters_wrapper
+    #catalog_filters_box.catalog_filters_box{data-toggle-target}
+      .catalog_filters data-filter-url=filters_catalogs_path
+        .catalog_filters_new_in
+          .catalog_filters_new_in__title
+            = ic_icon('ringing-bell', class: 'catalog_filters_new_in__icon')
+            = I18n.t(@category, scope: 'categories')
+          .catalog_filters_new_in_options
+            .catalog_filters_new_in__option data-filter='new_in' data-value='today'
+              = I18n.t(:today, scope: 'catalog.filters')
+            .catalog_filters_new_in__option data-filter='new_in' data-value='last_7_days'
+              = I18n.t(:last_7_days, scope: 'catalog.filters')
+            .catalog_filters_new_in__option data-filter='new_in' data-value='last_14_days'
+              = I18n.t(:last_14_days, scope: 'catalog.filters')
+            .catalog_filters_new_in__option.catalog_filters_new_in__option--active data-filter='new_in' data-value='all'
+              = I18n.t(:all, scope: 'catalog.filters')
+        .catalog_filters_filter
+          .catalog_filters_filter__title
+            = ic_icon('filter', class: 'catalog_filters_new_in__icon')
+            = I18n.t(:filter, scope: 'catalog.filters')
+          .catalog_filters_filter_options
+            .catalog_filters_filter_option
+              = I18n.t(:price, scope: 'catalog.filters')
+              .price_range
+                .price_range_min
+                  = number_field_tag :min_price, nil, placeholder: '0 €', class: 'price-range__input', data: { filter: 'price', input: 'min' }
+                .price_range__delimiter
+                  = I18n.t(:to, scope: 'catalog.filters')
+                .price_range_max
+                  = number_field_tag :max_price, nil, placeholder: '... €', class: 'price-range__input', data: { filter: 'price', input: 'max' }
+            .catalog_filters_filter_option
+              = I18n.t(:condition, scope: 'catalog.filters')
+            .catalog_filters_filter_option
+              = I18n.t(:availability, scope: 'catalog.filters')
   .catalog_wrapper--right
     = sort_options(@sort_direction, @category)
     .catalog_items_wrapper

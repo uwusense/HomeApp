@@ -32,8 +32,10 @@ class ToggleMenu
         @toggle($(nestedToggler))
 
   handleClickOutside: (e) =>
-    return if $(e.target).closest('[data-toggle-button], [data-toggle-target]').length
+    $targetElements = $('[data-toggle-button], [data-toggle-target]')
+    return if $targetElements.is(e.target) or $targetElements.has(e.target).length
 
+    console.log("clicked outside")
     $('[data-toggle-button]').each ->
       if $(this).data('toggleExpanded')
         $(this).trigger('click')

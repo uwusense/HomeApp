@@ -34,5 +34,5 @@ module ApplicationHelper
         data: { action: 'change->catalog-filter#sort' }
       )
     end
-  end  
+  end
 end
