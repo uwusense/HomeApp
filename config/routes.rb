@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   root "home#index"
 
-  get '/catalog/:tab', to: 'catalog#index', as: :catalog
   resources :products, only: %i[index show new create destroy]
+
+  resources :catalogs, only: [:index] do
+    collection do
+      get '/catalog/:tab', to: 'catalog#index', as: :catalog
+      get :filters
+    end
+  end
 end

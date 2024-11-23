@@ -1,39 +1,81 @@
-$ ->
-  $('.catalog_filters_new_in__options p').on 'click', (e) ->
-    $target = $(e.currentTarget)
-    filterCategory = $target.data('filter')
-    filterValue = $target.data('value')
+class CatalogFilter
+  constructor: ->
+    @currentFilterCategory = null
+    @currentFilterValue = null
+    @currentSortDirection = 'newest'
 
-    $target.siblings().removeClass('active')
-    $target.addClass('active')
+    $(document).on 'click', '.catalog_filters_new_in__option', (e) =>
+      $target = $(e.currentTarget)
+      @processDateFilters($target)
 
-    applyFilter(filterCategory, filterValue)
+    $(document).on 'click', '.catalog_filters_filter_option', (e) =>
+      $target = $(e.currentTarget)
+      @processDateFilters($target)
+
+    $(document).on 'change', '.sort-select', (e) =>
+      $target = $(e.currentTarget)
+      @processSorting($target)
   
-  $('.catalog_filters_filter_option').on 'click', (e) ->
-    $target = $(e.currentTarget)
-    filterCategory = $target.closest('.catalog_filters_filter').data('filter-category')
-    filterValue = $target.text().trim()
-    applyFilter(filterCategory, filterValue)
+  processDateFilters: ($target) ->
+      @currentFilterCategory = $target.data('filter')
+      @currentFilterValue = $target.data('value')
+      $target.siblings().removeClass('catalog_filters_new_in__option--active')
+      $target.addClass('catalog_filters_new_in__option--active')
+      @applyFilter()
 
-  applyFilter = (filterCategory, filterValue) ->
-    console.log("applying filter: #{filterCategory}, #{filterValue}")
+  processMainFilters: ($target) ->
+      @currentFilterCategory = $target.closest('.catalog_filters_filter').data('filter-category')
+      @currentFilterValue = $target.text().trim()
+      @applyFilter()
+
+  processSorting: ($target) ->
+    @currentSortDirection = $target.val()
+    @applyFilter()
+
+  showLoading: ->
+    $catalogRow = $('.catalog_items_row')
+    $catalogRow.empty()
+    $catalogRow.append('<p class="loading-indicator">Loading...</p>')
+
+  hideLoading: ->
+    $('.loading-indicator').remove()
+
+  applyFilter: ->
+    url = $('[data-filter-url]').data('filter-url')
+    category = $('[data-category]').data('category')
+
+    @showLoading()
+
     $.ajax
-      url: '/catalog'
+      url: url
       method: 'GET'
-      data: { filter_category: filterCategory, filter_value: filterValue, tab: $('.catalog_items_wrapper').data('tab') }
-      success: (response) ->
-        updateCatalogItems(response.items)
+      data: 
+        sort_direction: @currentSortDirection
+        filter_category: @currentFilterCategory
+        filter_value: @currentFilterValue
+        tab: category
+      success: (response) =>
+        @hideLoading()
+        @updateCatalogItems(response.items)
+      error: (xhr, status, error) ->
+        console.error "Error: #{error}"
 
-  updateCatalogItems = (items) ->
+  updateCatalogItems: (items) ->
     $catalogRow = $('.catalog_items_row')
     $catalogRow.empty()
 
+    unless items?.length > 0
+      $catalogRow.append('<p>No items found.</p>')
+      return
+
     items.forEach (item) ->
-      $catalogRow.append("""
+      $catalogRow.append """
         <div class="catalog_item">
           <div class="catalog_item__photo">#{item.name}</div>
-          <div class="catalog_item__title">Test title</div>
+          <div class="catalog_item__title">#{item.name}</div>
           <div class="catalog_item__price">$ #{item.price}</div>
-          <div class="catalog_item__seller">Test seller</div>
+          <div class="catalog_item__seller">#{item.username}</div>
         </div>
-      """)
+      """
+
+new CatalogFilter()
