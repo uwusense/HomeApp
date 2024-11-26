@@ -3,58 +3,14 @@
     = I18n.t(:filters, scope: 'catalog.filters')
 
 .catalog_wrapper data-category=@category data-sort=@sort_direction
-  .catalog_filters_wrapper
-    #catalog_filters_box.catalog_filters_box{data-toggle-target}
-      .catalog_filters data-filter-url=filters_catalogs_path
-        .catalog_filters_new_in
-          .catalog_filters_new_in__title
-            = ic_icon('ringing-bell', class: 'catalog_filters_new_in__icon')
-            = I18n.t(@category, scope: 'categories')
-          .catalog_filters_new_in_options
-            .catalog_filters_new_in__option.catalog_filters_new_in__option--active data-filter-date='all'
-              = I18n.t(:all_items, scope: 'catalog.filters')
-            .catalog_filters_new_in__option data-filter-date='today'
-              = I18n.t(:today, scope: 'catalog.filters')
-            .catalog_filters_new_in__option data-filter-date='last_7_days'
-              = I18n.t(:last_7_days, scope: 'catalog.filters')
-            .catalog_filters_new_in__option data-filter-date='last_14_days'
-              = I18n.t(:last_14_days, scope: 'catalog.filters')
-        .catalog_filters_filter
-          .catalog_filters_filter__title
-            = ic_icon('filter', class: 'catalog_filters_new_in__icon')
-            = I18n.t(:filter, scope: 'catalog.filters')
-          .catalog_filters_filter_options
-            .catalog_filters_filter_option
-              = I18n.t(:price, scope: 'catalog.filters')
-              .price_range
-                .price_range_min
-                  = number_field_tag :min_price, nil, placeholder: '0 €', class: 'price-range__input', data: { filter: 'price', input: 'min' }
-                .price_range__delimiter
-                  = I18n.t(:to, scope: 'catalog.filters')
-                .price_range_max
-                  = number_field_tag :max_price, nil, placeholder: '... €', class: 'price-range__input', data: { filter: 'price', input: 'max' }
-            .catalog_filters_filter_option
-              = I18n.t(:condition, scope: 'catalog.filters')
-              .catalog_filters_condition_options
-                .catalog_filters_condition_option.catalog_filters_condition_option--active data-filter-condition='all'
-                  = I18n.t(:all, scope: 'catalog.filters')
-                .catalog_filters_condition_option data-filter-condition='new'
-                  = I18n.t(:new, scope: 'catalog.filters')
-                .catalog_filters_condition_option data-filter-condition='like_new'
-                  = I18n.t(:like_new, scope: 'catalog.filters')
-                .catalog_filters_condition_option data-filter-condition='used'
-                  = I18n.t(:used, scope: 'catalog.filters')
+  = render partial: 'filters'
   .catalog_wrapper--right
     = sort_options(@sort_direction, @category)
     .catalog_items_wrapper
-      .catalog_items_row
-        - @items.each do |item|
-          .catalog_item
-            .catalog_item__photo
-              = item.name
-            .catalog_item__title
-              = item.name
-            .catalog_item__price
-              = item.price
-            .catalog_item__seller
-              = item.user.username
+      .hidden.catalog_items__loading
+        .loading-indicator
+          p Loading...
+      #items_list.catalog_items_row
+        = render partial: 'product', collection: @items, as: :item
+    #pagination
+      = paginate @items, remote: true

@@ -7,7 +7,6 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.string :category, null: false
       t.string :photo_url
       t.string :condition, null: false
-      t.string :availability, null: false
 
       t.timestamps
     end
@@ -15,7 +14,6 @@ class CreateProducts < ActiveRecord::Migration[7.1]
     add_reference :products, :user, null: false, foreign_key: true
 
     add_index :products, :condition
-    add_index :products, :availability
     add_index :products, :created_at
     add_index :products, :price
     add_index :products, :category

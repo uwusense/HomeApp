@@ -21,11 +21,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_182731) do
     t.string "category", null: false
     t.string "photo_url"
     t.string "condition", null: false
-    t.string "availability", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["availability"], name: "index_products_on_availability"
     t.index ["category"], name: "index_products_on_category"
     t.index ["condition"], name: "index_products_on_condition"
     t.index ["created_at"], name: "index_products_on_created_at"

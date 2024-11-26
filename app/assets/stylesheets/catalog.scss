@@ -54,18 +54,6 @@
   }
 }
 
-@media (max-width: $m-width) {
-  .catalog_items_wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .catalog_item {
-    max-width: 150px;
-    max-height: 250px;
-  }
-}
-
 .catalog_filters {
   display: flex;
   flex-direction: column;
@@ -152,6 +140,16 @@
 }
 
 @media (max-width: $m-width) {
+  .catalog_items_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .catalog_item {
+    max-width: 150px;
+    max-height: 250px;
+  }
+
   .catalog_filters_new_in,
   .catalog_filters_filter {
     margin-right: 30px;

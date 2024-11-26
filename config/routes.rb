@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :catalogs, only: [:index] do
     collection do
       get '/catalog/:tab', to: 'catalog#index', as: :catalog
-      get :filters
     end
   end
 end

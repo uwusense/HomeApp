@@ -32,6 +32,48 @@ body {
   flex-shrink: 0;
 }
 
+.hidden {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  
+  a { 
+    color: $black;
+    text-decoration: none;
+  }
+
+  .page {
+    margin: 0 2.5px;
+    font-size: 1.2em;
+  }
+
+  .page.current {
+    color: $white;
+    background: black;
+    margin: 0;
+    padding: 0 2px;
+  }
+
+  .next,
+  .prev,
+  .next a,
+  .prev a {
+    display: flex;
+    align-items: center;
+  }
+
+  .next {
+    margin-left: 5px;
+  }
+
+  .prev {
+    margin-right: 5px;
+  }
+}
+
 @media (max-width: $m-width) {
   .container {
     padding: 10px;

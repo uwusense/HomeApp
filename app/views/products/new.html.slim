@@ -27,10 +27,6 @@ h1 Create a Product
     = f.text_area :condition
 
   .form-group
-    = f.label :availability
-    = f.text_area :availability
-
-  .form-group
     = f.label :category
     = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [I18n.t(c, scope: 'categories'), c] }), include_blank: 'Select a category', class: 'category-select'
 
