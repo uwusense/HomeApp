@@ -35,7 +35,6 @@ class ToggleMenu
     $targetElements = $('[data-toggle-button], [data-toggle-target]')
     return if $targetElements.is(e.target) or $targetElements.has(e.target).length
 
-    console.log("clicked outside")
     $('[data-toggle-button]').each ->
       if $(this).data('toggleExpanded')
         $(this).trigger('click')

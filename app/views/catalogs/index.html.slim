@@ -1,6 +1,6 @@
 .catalog_filters__button
   = link_to root_path, data: { toggle_button: '#catalog_filters_box', toggle_class: '.catalog_filters__button--active'}
-    | Filters
+    = I18n.t(:filters, scope: 'catalog.filters')
 
 .catalog_wrapper data-category=@category data-sort=@sort_direction
   .catalog_filters_wrapper
@@ -11,14 +11,14 @@
             = ic_icon('ringing-bell', class: 'catalog_filters_new_in__icon')
             = I18n.t(@category, scope: 'categories')
           .catalog_filters_new_in_options
-            .catalog_filters_new_in__option data-filter='new_in' data-value='today'
+            .catalog_filters_new_in__option.catalog_filters_new_in__option--active data-filter-date='all'
+              = I18n.t(:all_items, scope: 'catalog.filters')
+            .catalog_filters_new_in__option data-filter-date='today'
               = I18n.t(:today, scope: 'catalog.filters')
-            .catalog_filters_new_in__option data-filter='new_in' data-value='last_7_days'
+            .catalog_filters_new_in__option data-filter-date='last_7_days'
               = I18n.t(:last_7_days, scope: 'catalog.filters')
-            .catalog_filters_new_in__option data-filter='new_in' data-value='last_14_days'
+            .catalog_filters_new_in__option data-filter-date='last_14_days'
               = I18n.t(:last_14_days, scope: 'catalog.filters')
-            .catalog_filters_new_in__option.catalog_filters_new_in__option--active data-filter='new_in' data-value='all'
-              = I18n.t(:all, scope: 'catalog.filters')
         .catalog_filters_filter
           .catalog_filters_filter__title
             = ic_icon('filter', class: 'catalog_filters_new_in__icon')
@@ -35,14 +35,20 @@
                   = number_field_tag :max_price, nil, placeholder: '... €', class: 'price-range__input', data: { filter: 'price', input: 'max' }
             .catalog_filters_filter_option
               = I18n.t(:condition, scope: 'catalog.filters')
-            .catalog_filters_filter_option
-              = I18n.t(:availability, scope: 'catalog.filters')
+              .catalog_filters_condition_options
+                .catalog_filters_condition_option.catalog_filters_condition_option--active data-filter-condition='all'
+                  = I18n.t(:all, scope: 'catalog.filters')
+                .catalog_filters_condition_option data-filter-condition='new'
+                  = I18n.t(:new, scope: 'catalog.filters')
+                .catalog_filters_condition_option data-filter-condition='like_new'
+                  = I18n.t(:like_new, scope: 'catalog.filters')
+                .catalog_filters_condition_option data-filter-condition='used'
+                  = I18n.t(:used, scope: 'catalog.filters')
   .catalog_wrapper--right
     = sort_options(@sort_direction, @category)
     .catalog_items_wrapper
       .catalog_items_row
         - @items.each do |item|
-          -Rails.logger.debug "----item: #{item.inspect}"
           .catalog_item
             .catalog_item__photo
               = item.name

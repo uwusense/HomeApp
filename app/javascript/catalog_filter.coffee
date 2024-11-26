@@ -1,10 +1,10 @@
 class CatalogFilter
   constructor: ->
-    @currentFilterCategory = null
-    @currentFilterValue = null
+    @currentFilterDate = null
     @currentSortDirection = 'newest'
     @currentMinPrice = null
     @currentMaxPrice = null
+    @currentCondition = null
     @debouncedApplyFilter = _.debounce(@applyFilter.bind(this), 500)
 
     $(document).on 'click', '.catalog_filters_new_in__option', (e) =>
@@ -16,12 +16,14 @@ class CatalogFilter
       @processSorting($target)
 
     $(document).on 'input', '.price-range__input', (e) =>
-      console.log("PRICE RANGE CHANGED")
       @processPriceRange()
+
+    $(document).on 'click', '.catalog_filters_condition_option', (e) =>
+      $target = $(e.currentTarget)
+      @processCondition($target)
   
   processDateFilters: ($target) ->
-      @currentFilterCategory = $target.data('filter')
-      @currentFilterValue = $target.data('value')
+      @currentFilterDate = $target.data('filter-date')
       $target.siblings().removeClass('catalog_filters_new_in__option--active')
       $target.addClass('catalog_filters_new_in__option--active')
       @showLoading()
@@ -44,6 +46,13 @@ class CatalogFilter
     @showLoading()
     @debouncedApplyFilter()
 
+  processCondition: ($target) ->
+    @currentCondition = $target.data('filter-condition')
+    $target.siblings().removeClass('catalog_filters_condition_option--active')
+    $target.addClass('catalog_filters_condition_option--active')
+    @showLoading()
+    @debouncedApplyFilter()
+
   showLoading: ->
     $catalogRow = $('.catalog_items_row')
     $catalogRow.empty()
@@ -62,10 +71,10 @@ class CatalogFilter
       method: 'GET'
       data:
         sort_direction: @currentSortDirection
-        filter_category: @currentFilterCategory
-        filter_value: @currentFilterValue
+        date: @currentFilterDate
         min_price: @currentMinPrice
         max_price: @currentMaxPrice
+        condition: @currentCondition
         tab: category
       success: (response) =>
         @hideLoading()
