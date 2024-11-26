@@ -1,4 +1,3 @@
-- items = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'nineth', 'tenth', 'eleventh', 'twelfth', 'thirtheenth']
 .newest_items
   .newest_items__title
     p Recently added items
@@ -6,10 +5,10 @@
   .scroll_menu data-scroll-menu='newest_items'
     .scroll_menu_wrapper
       .scroll_menu_content
-        - items.each do |item|
+        - @newest_items.each do |item|
           .scroll_menu_item
             .scroll_menu_item__photo
-              p = "Test #{item}"
+              = image_tag url_for(item.photos.first) if item.photos.present?
             .scroll_menu_item__price 
               p 20.59
             .scroll_menu_item__seller

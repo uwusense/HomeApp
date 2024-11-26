@@ -15,7 +15,6 @@
 #
 class Product < ApplicationRecord
   CATEGORIES = %w[
-    new_in
     furniture
     decor
     lightning
@@ -29,6 +28,10 @@ class Product < ApplicationRecord
     doors_windows
   ].freeze
 
+  CONDITIONS = %W[new like_new used ]
+
+  has_many_attached :photos
+
   belongs_to :user
 
   delegate :username, to: :user, allow_nil: true
@@ -37,6 +40,9 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :condition, presence: true
   validates :category, inclusion: { in: CATEGORIES, message: "%{value} is not a valid category" }
+  validates :photos,
+            content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+            limit: { max: 5, message: 'You can upload up to 5 pictures only'}
 
   scope :filter_by_category, ->(category) { where(category: category) if category.present? }
   scope :filter_by_condition, ->(condition) { where(condition: condition) if condition.present? }

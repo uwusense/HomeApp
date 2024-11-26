@@ -9,10 +9,21 @@ class CatalogsController < ApplicationController
     end
   end
 
+  def show
+    @item = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'Item not found'
+    redirect_to catalogs_path
+  end
+
   private
 
   def set_items
-    @items = Product.includes(:user).where(category: @category)
+    if @category == 'new_in'
+      @items = Product.includes(:user).all
+    else
+      @items = Product.includes(:user).where(category: @category)
+    end
     @items = apply_filters(@items).page(params[:page]).per(3)
     @items = apply_sorting(@items)
   end

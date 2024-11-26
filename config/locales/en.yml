@@ -58,3 +58,12 @@ en:
     electrical: Electrical
     heating_cooling: Heating & Cooling
     doors_windows: Doors & Windows
+  products:
+    new: New
+    like_new: Like new
+    used: Used
+    login_for: Login for more actions
+    contact: Contact with seller
+  user:
+    no_account: You have no account?
+    register: Register

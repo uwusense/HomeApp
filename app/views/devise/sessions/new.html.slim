@@ -14,3 +14,6 @@
         = link_to "Forgot your password?", new_password_path(resource_name)
     .session__actions
       = f.submit "Sign in", class: "session__actions-submit"
+    .sessions_more
+      = t(:no_account, scope: 'user')
+      = link_to t(:register, scope: 'user'), new_user_registration_path

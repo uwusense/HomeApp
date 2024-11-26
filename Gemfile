@@ -62,6 +62,7 @@ gem 'rails-assets-underscore', source: 'https://rails-assets.org'
 gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 gem 'rack-attack'
 gem 'kaminari'
+gem 'active_storage_validations'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

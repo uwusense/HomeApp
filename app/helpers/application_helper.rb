@@ -1,17 +1,23 @@
 module ApplicationHelper
   def navigation_items
     safe_join(
-      Product::CATEGORIES.map do |tab|
-        link_to I18n.t(tab, scope: 'categories'), catalogs_path(tab: tab), class: 'navigation__item'
-      end
+      [
+        link_to(I18n.t(:new_in, scope: 'categories'), catalogs_path(tab: 'new_in'), class: 'navigation__item'),
+        Product::CATEGORIES.map do |tab|
+          link_to(I18n.t(tab, scope: 'categories'), catalogs_path(tab: tab), class: 'navigation__item')
+        end
+      ]
     )
   end
 
   def navigation_dropdown_items
     safe_join(
-      Product::CATEGORIES.map do |tab|
-        link_to I18n.t(tab, scope: 'categories'), catalogs_path(tab: tab), class: 'navigation_dropdown__item'
-      end
+      [
+        link_to(I18n.t(:new_in, scope: 'categories'), catalogs_path(tab: 'new_in'), class: 'navigation_dropdown__item'),
+        Product::CATEGORIES.map do |tab|
+          link_to I18n.t(tab, scope: 'categories'), catalogs_path(tab: tab), class: 'navigation_dropdown__item'
+        end
+      ]
     )
   end
 
@@ -30,7 +36,7 @@ module ApplicationHelper
           selected: value
         ),
         include_blank: false,
-        class: 'sort-select',
+        class: 'select2 sort-select',
         data: { action: 'change->catalog-filter#sort' }
       )
     end

@@ -1,33 +1,39 @@
-h1 Create a Product
-
-= form_with model: @product, url: products_path, local: true do |f|
+.new_product_wrapper
   - if @product&.errors&.any?
     .error-messages
-      h3
-        = pluralize(@product.errors.count, "error")
-        prohibited this product from being saved:
+      h3 Errors prohibited this product from being saved:
       ul
         - @product.errors.full_messages.each do |msg|
           li= msg
+  h1 Create a Product
 
-  .form-group
-    = f.label :name
-    = f.text_field :name
+  = form_with model: @product, url: products_path, local: true do |f|
+    .new_product_form_wrapper
+      .new_product_form_left
+        .form-group
+          = f.label :name
+          = f.text_field :name
 
-  .form-group
-    = f.label :price
-    = f.number_field :price
+        .form-group
+          = f.label :price
+          = f.number_field :price, step: 0.01
 
-  .form-group
-    = f.label :description
-    = f.text_area :description
+        .form-group
+          = f.label :description
+          = f.text_area :description, maxlength: 500, placeholder: 'Enter up to 500 characters'
 
-  .form-group
-    = f.label :condition
-    = f.text_area :condition
+      .new_product_form_right
+        .form-group
+          = f.label :condition
+          = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [I18n.t(c, scope: 'products'), c] }), { include_blank: 'Select a condition' }, { class: 'select2', data: { placeholder: 'Choose your condition' } }
 
-  .form-group
-    = f.label :category
-    = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [I18n.t(c, scope: 'categories'), c] }), include_blank: 'Select a category', class: 'category-select'
+        .form-group
+          = f.label :category
+          = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [I18n.t(c, scope: 'categories'), c] }), { include_blank: 'Select a category' }, { class: 'select2', data: { placeholder: 'Choose your category' } }
 
-  = f.submit 'Save'
+        .form-group
+          = f.label :photos
+          = f.file_field :photos, multiple: true, accept: 'image/png,image/jpg,image/jpeg'
+
+    .new_product_submit_wrapper
+      = f.submit 'Create listing for 0.30 €', class: 'new_product__submit'

@@ -9,9 +9,13 @@ Rails.application.routes.draw do
 
   resources :products, only: %i[index show new create destroy]
 
-  resources :catalogs, only: [:index] do
+  resources :catalogs, only: %i[index] do
     collection do
       get '/catalog/:tab', to: 'catalog#index', as: :catalog
+    end
+
+    member do
+      get :show
     end
   end
 end

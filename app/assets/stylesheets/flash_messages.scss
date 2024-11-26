@@ -1,0 +1,56 @@
+@import 'variables';
+
+.flash-messages {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 500px;
+  text-align: center;
+}
+
+.flash {
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s;
+}
+
+.flash.success {
+  background-color: #4CAF50;
+}
+
+.flash.error {
+  background-color: #F44336;
+}
+
+.flash.alert {
+  background-color: #FF9800;
+}
+
+.flash.notice {
+  background-color: #2196F3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}

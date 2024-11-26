@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "product_params: #{product_params}"
     @product = Product.new(product_params)
     if @product.save
       flash[:success] = 'Listing created successfully!'
@@ -45,7 +44,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product)
-          .permit(:name, :price, :description, :category, :condition)
+          .permit(:name, :price, :description, :category, :condition, photos: [])
           .merge(user: current_user)
   end
 end
