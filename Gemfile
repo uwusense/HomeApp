@@ -63,6 +63,8 @@ gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 gem 'rack-attack'
 gem 'kaminari'
 gem 'active_storage_validations'
+gem 'searchkick'
+gem 'elasticsearch', '~> 7.17.7'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

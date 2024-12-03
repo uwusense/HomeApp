@@ -14,6 +14,8 @@
 #  category_id  :bigint           not null
 #
 class Product < ApplicationRecord
+  searchkick
+
   CATEGORIES = %w[
     furniture
     decor

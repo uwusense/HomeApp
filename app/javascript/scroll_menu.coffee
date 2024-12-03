@@ -34,7 +34,7 @@ class ScrollMenu
     @resizeItems()
 
     @updateButtons()
-    @$buttons = @$scrollMenu.find('[data-scroll]')
+    @$buttons = @$scrollMenu.find('[data-scroll], [data-arrow]')
 
     @scrollTo()
 

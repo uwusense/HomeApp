@@ -19,12 +19,16 @@ class CatalogsController < ApplicationController
   private
 
   def set_items
-    if @category == 'new_in'
-      @items = Product.includes(:user).all
+    query_conditions = apply_filters
+
+    if query.present?
+      @items = Product.search(query, where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
+    elsif @category == 'new_in'
+      @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
     else
-      @items = Product.includes(:user).where(category: @category)
+      @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
     end
-    @items = apply_filters(@items).page(params[:page]).per(3)
+    Rails.logger.debug "@items: #{@items}"
     @items = apply_sorting(@items)
   end
 
@@ -38,26 +42,33 @@ class CatalogsController < ApplicationController
       condition: params[:condition],
       sort_direction: params[:sort_direction] || 'newest',
       min_price: params[:min_price],
-      max_price: params[:max_price]
+      max_price: params[:max_price],
+      query: params[:query]
     }
   end
 
-  def apply_filters(items)
-    # Date
-    case @filters[:date]
-    when 'today'
-      items = items.where('created_at >= ?', 1.day.ago)
-    when 'last_7_days'
-      items = items.where('created_at >= ?', 7.days.ago)
-    when 'last_14_days'
-      items = items.where('created_at >= ?', 14.days.ago)
+  def apply_filters
+    query_conditions = {}
+    query_conditions[:category] = @category if @category && @category != 'new_in'
+
+    if @filters[:date].present?
+      case @filters[:date]
+      when 'today'
+        query_conditions[:created_at] = { gte: 1.day.ago }
+      when 'last_7_days'
+        query_conditions[:created_at] = { gte: 7.days.ago }
+      when 'last_14_days'
+        query_conditions[:created_at] = { gte: 14.days.ago }
+      end
     end
-    # Price range
-    items = items.where('price >= ?', @filters[:min_price]) if @filters[:min_price].present?
-    items = items.where('price <= ?', @filters[:max_price]) if @filters[:max_price].present?
-    # Conditions
-    items = items.where(condition: @filters[:condition]) if @filters[:condition].present? && @filters[:condition] != 'all'
-    items
+
+    query_conditions[:price] = {}
+    query_conditions[:price][:gte] = @filters[:min_price].to_f if @filters[:min_price].present?
+    query_conditions[:price][:lte] = @filters[:max_price].to_f if @filters[:max_price].present?
+
+    query_conditions[:condition] = @filters[:condition] if @filters[:condition].present? && @filters[:condition] != 'all'
+
+    query_conditions
   end
 
   def apply_sorting(items)
@@ -81,5 +92,9 @@ class CatalogsController < ApplicationController
       pagination: view_context.paginate(@items, remote: true)
     }
     render json: response
+  end
+
+  def query
+    params[:query]
   end
 end
