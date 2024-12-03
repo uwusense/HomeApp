@@ -18,4 +18,8 @@ Rails.application.routes.draw do
       get :show
     end
   end
+
+  resources :chat_rooms, only: %i[index create show update destroy] do
+    resources :messages, only: [:create]
+  end
 end

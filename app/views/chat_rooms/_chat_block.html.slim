@@ -1,0 +1,19 @@
+- if chat_room
+  .chat_block_header
+    .chat_block_header__title
+      = chat_room.topic
+    .chat_inline
+      .chat_block_header__user_name
+        = chat_room.creator.username
+      .chat_block_header__action
+        = link_to 'Delete', chat_room_path(chat_room), method: :delete, data: { confirm: "Are you sure?" }
+  .chat_block_communication#messages
+    = turbo_stream_from chat_room
+    - chat_room.messages.each do |message|
+      = render message
+  .chat_block_actions
+    = form_with(model: [chat_room, message], data: { turbo: true }) do |form|
+      = form.text_field :body, placeholder: "Type a message..."
+      = form.submit "Send"
+- else
+  | No chatroom selected.

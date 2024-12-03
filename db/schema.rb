@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_163256) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_03_151651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_163256) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "topic"
+    t.boolean "draft"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "participant_id", null: false
+    t.index ["creator_id"], name: "index_chat_rooms_on_creator_id"
+    t.index ["participant_id"], name: "index_chat_rooms_on_participant_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -77,5 +98,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_163256) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chat_rooms", "users", column: "creator_id"
+  add_foreign_key "chat_rooms", "users", column: "participant_id"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "products", "users"
 end

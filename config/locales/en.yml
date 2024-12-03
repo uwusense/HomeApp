@@ -67,3 +67,5 @@ en:
   user:
     no_account: You have no account?
     register: Register
+  chats:
+    chats: Chats

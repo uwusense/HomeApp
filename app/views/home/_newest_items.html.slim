@@ -1,0 +1,16 @@
+.newest_items
+  .newest_items__title
+    p Recently added items
+
+  .scroll_menu data-scroll-menu='newest_items'
+    .scroll_menu_wrapper
+      .scroll_menu_content
+        - newest_items.each do |item|
+          = link_to catalog_path(item), class: 'scroll_menu_item'
+            .scroll_menu_item__photo
+              = image_tag url_for(item.photos.first) if item.photos.present?
+            .scroll_menu_item__price 
+              = number_to_currency(item.price, unit: '€', precision: 2)
+            .scroll_menu_item__seller
+              = item.user.username
+      .scroll_menu__button

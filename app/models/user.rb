@@ -18,4 +18,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products, dependent: :destroy
+  has_many :created_chat_rooms, class_name: 'ChatRoom', foreign_key: 'creator_id', dependent: :destroy
+  has_many :participating_chat_rooms, class_name: 'ChatRoom', foreign_key: 'participant_id', dependent: :destroy
+  has_many :messages
+
+  def chat_rooms
+    ChatRoom.where('creator_id = :user_id OR participant_id = :user_id', user_id: id)
+  end
 end
