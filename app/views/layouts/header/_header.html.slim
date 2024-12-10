@@ -1,6 +1,6 @@
 .header
   .header__logo
-    = link_to 'Youbuild', root_path
+    = link_to 'Youbuild', root_path, data: { turbo: false }
   .header-content
     .header-content__search
       = form_with url: catalogs_path, method: :get, local: true do |f|

@@ -2,11 +2,11 @@ title HomeApp
 meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"
 meta http-equiv="content-type" content="text/html;charset=UTF-8"
 meta name="viewport" content="width=device-width, initial-scale=1.0"
+meta name="turbo-prefetch" content="false"
 = csrf_meta_tag
 
-= stylesheet_link_tag 'application', media: 'all'
+= stylesheet_link_tag 'application', media: 'all', as: 'style'
 = yield :include_stylesheets
 
 = javascript_importmap_tags
-
-= yield :include_javascripts  
+= yield :include_javascripts

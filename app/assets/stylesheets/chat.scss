@@ -91,26 +91,8 @@
 
 .chat_block_communication {
   flex-grow: 1;
-  overflow-y: auto;
-}
-
-.chat_block_communication_received_message,
-.chat_block_communication_sent_message {
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
-}
-
-.chat_block_communication_received_message {
-  background-color: $light-blue;
-  align-self: flex-start;
-}
-
-.chat_block_communication_sent_message {
-  background-color: $dark-green;
-  align-self: flex-end;
-  color: $white;
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 
 .chat_block_actions {
@@ -153,4 +135,17 @@
 .navigation_dropdown__content {
   display: flex;
   flex-direction: column;
+}
+
+.message_wrapper {
+}
+.message_content {
+  border: 1px solid $black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-width: 250px;
+  padding: 10px;
+  padding: 5px;
+  width: fit-content;
+  word-wrap: break-word;
 }

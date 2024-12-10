@@ -1,3 +1,6 @@
-.message_wrapper
-  = message.user.email
-  = message.body
+.message_wrapper(class="message_#{message.user.id}")
+  .message_content
+    .message__title
+      = message.user.username
+    .message__body
+      = message.body

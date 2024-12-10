@@ -3,26 +3,26 @@
     | Open chat list
   #chat_dropdown_box.chat_dropdown__wrapper{data-toggle-target}
     .chat_dropdown__content
-      - @chat_rooms.each do |room|
-        = link_to chat_room_path(room), remote: true do
+      - @chat_rooms.each do |chat_room|
+        = link_to chat_room_path(chat_room), remote: true do
           .chat_list_item
             .chat_inline
               .chat_list_item__user_name
-                = room.participant.username
+                = chat_room.target_person(current_user).username
               .chat_list_item__last_activity
-                = room.updated_at.strftime("%d. %b. %H:%M")
+                = chat_room.updated_at.strftime("%d. %b. %H:%M")
             .chat_list_item__last_message
-              = room.messages.last.body if room.messages.last.present?
+              = chat_room.messages.last.body if chat_room.messages.last.present?
   .chat_list
-    - @chat_rooms.each do |room|
-      = link_to chat_room_path(room), remote: true do
+    - @chat_rooms.each do |chat_room|
+      = link_to chat_room_path(chat_room), remote: true do
         .chat_list_item
           .chat_inline
             .chat_list_item__user_name
-              = room.participant.username
+              = chat_room.target_person(current_user).username
             .chat_list_item__last_activity
-              = room.updated_at.strftime("%d. %b. %H:%M")
+              = chat_room.updated_at.strftime("%d. %b. %H:%M")
           .chat_list_item__last_message
-            = room.messages.last.body if room.messages.last.present?
-  #chat_block.chat_block
-    = render 'chat_block', chat_room: @selected_room, message: @message
+            = chat_room.messages.last.body if chat_room.messages.last.present?
+  .chat_block
+    = render 'chat_block', chat_room: @chat_room, message: @message

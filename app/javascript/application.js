@@ -1,7 +1,10 @@
-//= require underscore
-//= require jquery
-//= require jquery_ujs
-//= require select2
-
-//= require_tree .
-//= require_self
+import "jquery";
+import "underscore"
+import "@hotwired/turbo-rails";
+import "controllers";
+import "select2";
+import "components/toggle_menu";
+import "components/catalog_filter";
+import "components/flash_messages";
+import "components/scroll_menu";
+import "components/scroll_helper"

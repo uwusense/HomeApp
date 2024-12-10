@@ -5,4 +5,8 @@ class ChatRoom < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   broadcasts
+
+  def target_person(current_user)
+    current_user == creator ? participant : creator
+  end
 end
