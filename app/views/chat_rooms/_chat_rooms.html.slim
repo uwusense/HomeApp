@@ -1,0 +1,3 @@
+.chat_list
+  - chat_rooms.each do |chat_room|
+    = render 'chat_rooms/chat_room', chat_room: chat_room, last_message: chat_room.latest_message, user: user

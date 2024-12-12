@@ -1,0 +1,6 @@
+= link_to chat_room_path(chat_room), locals: { user: user } do
+  .chat_list_item
+    .chat_list_item__user_name
+      = chat_room.target_person(user).username
+    = turbo_frame_tag "chat_room_#{chat_room.id}_last_message" do
+      = render "chat_rooms/last_message", chat_room: chat_room, last_message: last_message, user: user

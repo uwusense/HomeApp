@@ -49,6 +49,6 @@ class ChatRoomsController < ApplicationController
   end
 
   def set_current_user_chat_rooms
-    @chat_rooms = current_user.chat_rooms.includes(:messages).order(updated_at: :desc)
+    @chat_rooms = current_user.chat_rooms.includes(:messages).order(last_message_at: :desc)
   end
 end

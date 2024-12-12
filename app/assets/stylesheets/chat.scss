@@ -53,6 +53,8 @@
 .chat_list_item__last_message {
   font-size: 0.8em;
   color: $dark-gray;
+  display: flex;
+  justify-content: space-between;
 }
 
 .chat_block {

@@ -3,6 +3,7 @@ class Message < ApplicationRecord
   belongs_to :chat_room
 
   after_create_commit -> {
+    update_parent_room
     broadcast_append_to chat_room
   }
 
@@ -10,15 +11,11 @@ class Message < ApplicationRecord
     broadcast_remove_to chat_room
   }
 
-  after_create :update_chat_room
-
   def own?
     self.user == current_user
   end
 
-  private
-
-  def update_chat_room
-    chat_room.touch
+  def update_parent_room
+    chat_room.update(last_message_at: Time.now)
   end
 end
