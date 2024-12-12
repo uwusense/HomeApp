@@ -1,28 +1,10 @@
+- Rails.logger.debug "chat_rooms_from_index: #{@hcat_rooms.inspect}"
 .chat_wrapper
   = link_to root_path, class: 'chat_list__button', data: { toggle_button: '#chat_dropdown_box', toggle_class: '.chat_dropdown--active' }
     | Open chat list
   #chat_dropdown_box.chat_dropdown__wrapper{data-toggle-target}
     .chat_dropdown__content
-      - @chat_rooms.each do |chat_room|
-        = link_to chat_room_path(chat_room), remote: true do
-          .chat_list_item
-            .chat_inline
-              .chat_list_item__user_name
-                = chat_room.target_person(current_user).username
-              .chat_list_item__last_activity
-                = chat_room.updated_at.strftime("%d. %b. %H:%M")
-            .chat_list_item__last_message
-              = chat_room.messages.last.body if chat_room.messages.last.present?
-  .chat_list
-    - @chat_rooms.each do |chat_room|
-      = link_to chat_room_path(chat_room), remote: true do
-        .chat_list_item
-          .chat_inline
-            .chat_list_item__user_name
-              = chat_room.target_person(current_user).username
-            .chat_list_item__last_activity
-              = chat_room.updated_at.strftime("%d. %b. %H:%M")
-          .chat_list_item__last_message
-            = chat_room.messages.last.body if chat_room.messages.last.present?
+      = render 'chat_rooms/list', chat_rooms: @chat_rooms, user: current_user
+  = render 'chat_rooms/list', chat_rooms: @chat_rooms, user: current_user
   .chat_block
-    = render 'chat_block', chat_room: @chat_room, message: @message
+    = render 'chat_rooms/block', chat_room: @chat_room, message: @message, user: current_user

@@ -1,0 +1,11 @@
+.chat_list
+  - chat_rooms.each do |chat_room|
+    = link_to chat_room_path(chat_room), locals: { user: user } do
+      .chat_list_item
+        .chat_inline
+          .chat_list_item__user_name
+            = chat_room.target_person(user).username
+          .chat_list_item__last_activity
+            = chat_room.updated_at.strftime("%d. %b. %H:%M")
+          .chat_list_item__last_message
+            = chat_room.messages.last.body if chat_room.messages.last.present?
