@@ -1,4 +1,4 @@
 - unless last_message.nil?
   .chat_list_item__last_message
-    p= last_message.body.truncate(40)
-    p= last_message.created_at
+    p= last_message.body.truncate(20)
+    p= last_message.created_at.strftime("%d. %b. %H:%M")

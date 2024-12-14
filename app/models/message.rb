@@ -17,5 +17,8 @@ class Message < ApplicationRecord
 
   def update_parent_room
     chat_room.update(last_message_at: Time.now)
+    if chat_room.messages.count > 0
+      chat_room.update(draft: false)
+    end
   end
 end

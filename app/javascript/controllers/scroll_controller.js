@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    console.log("connect")
     this.messages = document.getElementById("messages");
     this.observer = new MutationObserver(() => this.resetScroll());
     this.observeMessages();
@@ -10,7 +9,6 @@ export default class extends Controller {
   }
   
   disconnect() {
-    console.log("disconnect")
     if (this.observer) {
       this.observer.disconnect();
     }
@@ -23,7 +21,6 @@ export default class extends Controller {
   }
 
   resetScroll() {
-    console.log("reset scroll")
     messages.scrollTop = messages.scrollHeight - messages.clientHeight;
   }
 }

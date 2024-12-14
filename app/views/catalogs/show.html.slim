@@ -7,14 +7,16 @@
       = @item.name
     .main_product__description
       = @item.description
-    .main_product__price
-      = number_to_currency(@item.price, unit: '€', precision: 2)
+
+    .grid
+      .main_product__price
+        = number_to_currency(@item.price, unit: '€', precision: 2)
+      .main_product__seller
+        = t(:seller, scope: 'products')
+        = @item.user.username
 
     .main_product__contact_button
       - if user_signed_in?
         = button_to t(:contact, scope: 'products'), chat_rooms_path(participant_id: @item.user.id)
       - else
         = link_to t(:login_for, scope: 'products'), new_user_session_path
-        
-    .main_product__seller
-      = @item.user.username

@@ -1,6 +1,10 @@
 .message_wrapper(class="message_#{message.user.id}")
   .message_content
-    .message__title
-      = message.user.username
+    .chat_inline
+      .message__title
+        = message.user.username
+      .message__date
+        = message.created_at.strftime("%d. %b. %H:%M")
+    hr
     .message__body
       = message.body

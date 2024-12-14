@@ -3,7 +3,7 @@ class ChatRoomsController < ApplicationController
   before_action :set_current_user_chat_rooms
 
   def index
-    @selected_room = @chat_rooms.find(params[:chat_room_id]) if params[:chat_room_id]
+    @chat_room = @chat_rooms.find(params[:chat_room_id]) if params[:chat_room_id]
 
     render 'index'
   end

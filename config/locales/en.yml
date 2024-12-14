@@ -64,8 +64,11 @@ en:
     used: Used
     login_for: Login for more actions
     contact: Contact with seller
+    seller: 'Seller: '
   user:
     no_account: You have no account?
     register: Register
   chats:
     chats: Chats
+    draft: Draft
+    my_chats: My chats

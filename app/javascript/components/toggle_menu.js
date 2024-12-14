@@ -2,6 +2,7 @@ class ToggleMenu {
   constructor() {
     $(document).on('click', '[data-toggle-button]', (e) => this.toggleContent(e));
     $(document).on('click', (e) => this.handleClickOutside(e));
+    $(window).on('resize', () => this.closeAllToggles());
   }
 
   toggleContent(e) {
@@ -48,6 +49,10 @@ class ToggleMenu {
       return;
     }
 
+    this.closeAllToggles()
+  }
+
+  closeAllToggles() {
     $('[data-toggle-button]').each(function() {
       if ($(this).data('toggle-expanded')) {
         $(this).trigger('click');

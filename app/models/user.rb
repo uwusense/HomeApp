@@ -23,6 +23,6 @@ class User < ApplicationRecord
   has_many :messages
 
   def chat_rooms
-    ChatRoom.where('creator_id = :user_id OR participant_id = :user_id', user_id: id)
+    ChatRoom.where('(creator_id = :user_id) OR (participant_id = :user_id AND draft = false)', user_id: id)
   end
 end

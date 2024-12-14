@@ -1,6 +1,10 @@
-= link_to chat_room_path(chat_room), locals: { user: user } do
+= link_to chat_room_path(chat_room), data: { turbo_frame: "chat_block_content" } do
   .chat_list_item
-    .chat_list_item__user_name
-      = chat_room.target_person(user).username
+    .chat_list_item__inline
+      .chat_list_item__user_name
+        = chat_room.target_person(user).username
+      .chat_list_item__draft
+        = turbo_frame_tag "chat_room_#{chat_room.id}_draft" do
+          = render "chat_rooms/draft", chat_room: chat_room
     = turbo_frame_tag "chat_room_#{chat_room.id}_last_message" do
       = render "chat_rooms/last_message", chat_room: chat_room, last_message: last_message, user: user
