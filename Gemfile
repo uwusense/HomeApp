@@ -65,6 +65,10 @@ gem 'kaminari'
 gem 'active_storage_validations'
 gem 'searchkick'
 gem 'elasticsearch', '~> 7.17.7'
+gem 'factory_bot_rails'
+gem 'faker'
+gem 'pry-rails'
+gem 'webdrivers', '~> 4.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
