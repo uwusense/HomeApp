@@ -30,4 +30,8 @@ Rails.application.routes.draw do
       post :add_funds
     end
   end
+
+  namespace :admin do
+    resources :users, :products
+  end
 end
