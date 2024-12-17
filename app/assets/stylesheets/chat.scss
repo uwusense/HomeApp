@@ -113,6 +113,12 @@
   }
 }
 
+.chat_block_header__draft {
+  font-size: 0.75em;
+  font-style: italic;
+  color: $dark-gray;
+}
+
 .chat_block_communication {
   flex-grow: 1;
   max-height: 60vh;

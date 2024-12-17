@@ -5,6 +5,7 @@ class ChatRoom < ApplicationRecord
   after_update_commit do
      broadcast_latest_message
      broadcast_draft_update
+     broadcast_draft_message_update
   end
 
   has_many :messages, dependent: :destroy
@@ -25,7 +26,7 @@ class ChatRoom < ApplicationRecord
     broadcast_update_to('chat_rooms',
       target: target,
       partial: 'chat_rooms/last_message',
-      locals: { test_thing: "123", chat_room: self, last_message: last_message, user: last_message.user }
+      locals: { chat_room: self, last_message: last_message, user: last_message.user }
     )
   end
 
@@ -34,7 +35,16 @@ class ChatRoom < ApplicationRecord
     broadcast_update_to('chat_rooms',
       target: target,
       partial: 'chat_rooms/draft',
-      locals: { test_thing: "123", chat_room: self }
+      locals: { chat_room: self }
+    )
+  end
+
+  def broadcast_draft_message_update
+    target = "chat_room_#{id}_draft_message"
+    broadcast_update_to('chat_rooms',
+      target: target,
+      partial: 'chat_rooms/draft_message',
+      locals: { chat_room: self }
     )
   end
 end

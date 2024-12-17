@@ -29,6 +29,9 @@
 
 en:
   hello: "Hello world"
+  show: Show
+  delete: Delete
+  info: 'Info: '
   catalog:
     filters:
       filter: Filter
@@ -59,12 +62,19 @@ en:
     heating_cooling: Heating & Cooling
     doors_windows: Doors & Windows
   products:
+    create: Create a Product
     new: New
     like_new: Like new
     used: Used
     login_for: Login for more actions
     contact: Contact with seller
     seller: 'Seller: '
+    name: Name
+    price: Price
+    description: Description
+    category: Category
+    condition: Condition
+    actions: Actions
   user:
     no_account: You have no account?
     register: Register
@@ -72,3 +82,8 @@ en:
     chats: Chats
     draft: Draft
     my_chats: My chats
+    draft_warning: This is draft and message receiver cant see this chat yet!
+  header:
+    start_selling: Start selling
+  flash:
+    sign_in: You need to sign in or sign up before continuing.

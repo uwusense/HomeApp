@@ -90,4 +90,8 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     visit root_path
   end
+
+  config.before(:suite) do
+    Product.reindex
+  end
 end

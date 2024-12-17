@@ -1,12 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show destroy]
+  before_action :set_product, only: %i[destroy]
   before_action :authenticate_user!
 
   def index
     @products = current_user.products
   end
-
-  def show;end
 
   def new
     @product = Product.new
@@ -18,18 +16,23 @@ class ProductsController < ApplicationController
       flash[:success] = 'Listing created successfully!'
       redirect_to product_path(@product)
     else
-      flash.now[:error] = 'Failed to create listing'
-      render :new
+      flash[:alert] = 'Failed to create listing'
+      redirect_to new_product_path
     end
   end
 
   def destroy
-    if @product.destroy
-      flash[:success] = 'Listing deleted successfully!'
-      redirect_to products_path
+    if @product.user == current_user
+      if @product.destroy
+        flash[:success] = 'Listing deleted successfully!'
+        redirect_to products_path
+      else
+        flash[:alert] = 'Failed to delete listing'
+        redirect_back fallback_location: products_path
+      end
     else
-      flash[:error] = 'Failed to delete listing'
-      redirect_back fallback_location: products_path
+      flash[:alert] = 'Unexpected'
+      redirect_to products_path
     end
   end
 

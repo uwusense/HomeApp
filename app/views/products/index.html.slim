@@ -1,16 +1,27 @@
-h1 All Products
-.table
-  thead
-    tr
-      th Name
-      th Price
-      th Category
-      th Actions
-  tbody
-    - @products.each do |product|
-      tr
-        td = link_to product.name, product_path(product)
-        td = number_to_currency(product.price)
-        td = product.category
-        td
-          = link_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }
+h1 Your Products
+
+- if @products.any?
+  .product_list
+    table
+      thead
+        tr
+          th= t(:name, scope: 'products')
+          th= t(:price, scope: 'products')
+          th= t(:description, scope: 'products')
+          th= t(:category, scope: 'products')
+          th= t(:condition, scope: 'products')
+          th= t(:actions, scope: 'products')
+      tbody
+        - @products.each do |product|
+          tr
+            td = product.name
+            td = number_to_currency(product.price)
+            td = truncate(product.description, length: 50)
+            td = t(product.category, scope: 'categories')
+            td = product.condition.humanize
+            td
+              = link_to t(:show), catalog_path(product), class: 'default_button default_button--green'
+              = link_to t(:delete), product_path(product), method: :delete, class: 'default_button default_button--red', data: { turbo: false, confirm: "Are you sure?" }
+- else
+  p You have no products yet.
+    = link_to t(:start_selling, scope: 'header'), new_product_path
