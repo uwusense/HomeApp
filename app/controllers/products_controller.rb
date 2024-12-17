@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @products = current_user.products
+    @products = current_user.products.page(params[:page]).per(5)
   end
 
   def new
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product)
-          .permit(:name, :price, :description, :category, :condition, photos: [])
-          .merge(user: current_user)
+      .permit(:name, :price, :description, :category, :condition, photos: [])
+      .merge(user: current_user)
   end
 end

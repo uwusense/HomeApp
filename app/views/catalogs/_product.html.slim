@@ -1,9 +1,16 @@
-= link_to catalog_path(item), class: 'catalog_item' do
-  .catalog_item__photo
-    = image_tag url_for(item.photos.first) if item.photos.present?
-  .catalog_item__title
-    = item.name
-  .catalog_item__price
-    = number_to_currency(item.price, unit: '€', precision: 2)
-  .catalog_item__seller
-    = item.user.username
+.catalog_item
+  = link_to catalog_path(item) do
+    .catalog_item__photo
+      = image_tag url_for(item.photos.first) if item.photos.present?
+    .catalog_item__title
+      = item.name
+    .catalog_item__price
+      = number_to_currency(item.price, unit: '€', precision: 2)
+    .catalog_item__seller
+      = item.user.username
+  - if current_user.favorited_products.include?(item)
+    = button_to favorite_product_path(item.id), method: :delete, class: 'favorite_icon favorite_icon--favorited', data: { turbo: false } do
+      = ic_icon('star')
+  - else
+    = button_to favorite_products_path(product_id: item.id), method: :post, class: 'favorite_icon', data: { turbo: false } do
+      = ic_icon('star')

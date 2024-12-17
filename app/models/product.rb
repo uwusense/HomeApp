@@ -33,6 +33,8 @@ class Product < ApplicationRecord
   CONDITIONS = %W[new like_new used ]
 
   has_many_attached :photos
+  has_many :favorited_products
+  has_many :favorited_by, through: :favorited_products, source: :user
 
   belongs_to :user
 

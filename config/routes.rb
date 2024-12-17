@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: %i[index create show update destroy] do
     resources :messages, only: [:create]
   end
+
+  resources :favorite_products, only: %i[index create destroy]
 end

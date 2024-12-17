@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_12_195932) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_17_145426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_195932) do
     t.datetime "last_message_at"
     t.index ["creator_id"], name: "index_chat_rooms_on_creator_id"
     t.index ["participant_id"], name: "index_chat_rooms_on_participant_id"
+  end
+
+  create_table "favorite_products", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorite_products_on_product_id"
+    t.index ["user_id"], name: "index_favorite_products_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -101,6 +110,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_195932) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chat_rooms", "users", column: "creator_id"
   add_foreign_key "chat_rooms", "users", column: "participant_id"
+  add_foreign_key "favorite_products", "products"
+  add_foreign_key "favorite_products", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "products", "users"
