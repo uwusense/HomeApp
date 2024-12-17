@@ -1,0 +1,31 @@
+.wallet_wrapper
+  .wallet__balance
+    p Balance: #{number_to_currency(@wallet.balance, unit: '€', precision: 2)}
+
+  .wallet_form
+    = form_with url: add_funds_wallet_path(@wallet), local: true do |f|
+      p Choose Option:
+      .grid.wallet_form__type
+        = f.radio_button :transaction_type, 'citadele', id: 'transaction_type_citadele'
+        = f.label :transaction_type_citadele, 'Citadele'
+      .grid.wallet_form__type
+        = f.radio_button :transaction_type, 'swedbank', id: 'transaction_type_swedbank'
+        = f.label :transaction_type_swedbank, 'Swedbank'
+      .wallet_form__amount
+        = f.label :amount, 'Amount'
+        = f.number_field :amount, step: '0.01'
+      p
+        = f.submit 'Add funds'
+  h3 Transaction history
+  table
+    thead
+      tr
+        th Type
+        th Amount
+        th Date
+    tbody
+      - @transactions.each do |transaction|
+        tr
+          td = transaction.transaction_type.titleize
+          td = number_to_currency(transaction.amount, unit: '€', precision: 2)
+          td = transaction.created_at.strftime("%Y-%m-%d %H:%M:%S")

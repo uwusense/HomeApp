@@ -24,4 +24,10 @@ Rails.application.routes.draw do
   end
 
   resources :favorite_products, only: %i[index create destroy]
+
+  resources :wallets, only: [:index] do
+    member do
+      post :add_funds
+    end
+  end
 end

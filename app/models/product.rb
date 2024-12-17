@@ -31,6 +31,7 @@ class Product < ApplicationRecord
   ].freeze
 
   CONDITIONS = %W[new like_new used ]
+  LISTING_FEE = 0.30
 
   has_many_attached :photos
   has_many :favorited_products

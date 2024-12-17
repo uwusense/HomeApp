@@ -23,8 +23,17 @@ class User < ApplicationRecord
   has_many :messages
   has_many :favorite_products
   has_many :favorited_products, through: :favorite_products, source: :product
+  has_one :wallet, dependent: :destroy
+
+  after_create :create_user_wallet
 
   def chat_rooms
     ChatRoom.where('(creator_id = :user_id) OR (participant_id = :user_id AND draft = false)', user_id: id)
+  end
+
+  private
+
+  def create_user_wallet
+    Wallet.create(user: self, balance: 0)
   end
 end

@@ -170,7 +170,7 @@
   display: none;
   box-shadow: 0 1px 5px $black;
   position: absolute;
-  right: 25px;
+  right: 125px;
   top: 75px;
   width: 200px;
   z-index: 5;
@@ -197,14 +197,25 @@
 }
 
 .header__wallet {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: 1px solid $charcoal;
   border-radius: 5px;
   padding: 3px;
 
   i {
     margin-left: 3px;
+  }
+
+  .grid {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover {
+    color: $dark-gray;
+    border-color: $dark-gray;
+
+    .header__wallet_amount {
+      color: $black;
+    }
   }
 }
