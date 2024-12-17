@@ -20,6 +20,9 @@
           = ic_icon('person')
         = link_to chat_rooms_path do
           = ic_icon('bubble')
+        .header__wallet
+          | € 421.12
+          = ic_icon('wallet')
         = button_to 'Logout', destroy_user_session_path, method: :delete, class: 'header-content-right__actions--button'
 #profile_menu_box.profile_menu__wrapper
   .profile_menu__content

@@ -195,3 +195,16 @@
     }
   }
 }
+
+.header__wallet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $charcoal;
+  border-radius: 5px;
+  padding: 3px;
+
+  i {
+    margin-left: 3px;
+  }
+}

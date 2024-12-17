@@ -1,0 +1,7 @@
+.catalog_wrapper
+  .catalog_wrapper--right
+    .catalog_items_wrapper
+      #items_list.catalog_items_row
+        = render partial: 'catalogs/product', collection: @fav_products, as: :item
+    #pagination
+      = paginate @fav_products
