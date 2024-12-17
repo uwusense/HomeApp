@@ -16,8 +16,15 @@
 
   .navigation__item {
     cursor: pointer;
-    margin-right: 10px;
-    padding-right: 10px;
+    margin-right: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: $dark-gray;
+    }
   }
 
   a,
@@ -43,6 +50,7 @@
     align-items: center;
     float: right;
     margin-right: 40px;
+    margin-left: 20px;
 
     a, button {
       color: $white;

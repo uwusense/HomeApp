@@ -156,3 +156,9 @@ hr {
   display: flex;
   flex-direction: row;
 }
+
+.icon {
+  &:hover {
+    color: $dark-gray;
+  }
+}

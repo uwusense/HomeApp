@@ -22,12 +22,17 @@
   scroll-behavior: smooth;
   width: 100%;
   max-width: 1280px;
-  padding: 10px 0;
   position: relative;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 
   &:after {
     content: '';
     width: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -36,22 +41,17 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 10px;
-
-  &--active {
-    background-color: red;
-  }
 }
 
 .scroll_menu_item {
   flex-shrink: 0;
-  border: .5px solid red;
   margin-right: 10px;
   width: 200px;
   height: 320px;
   box-sizing: border-box;
+  background-color: $darker-default-background;
 
   &__photo {
-    border: .5px solid $black;
     width: 100%;
     height: 200px;
 
@@ -60,4 +60,30 @@
       height: 100%;
     }
   }
+}
+
+.scroll_menu__arrow--left {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.scroll_menu__arrow--right {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.scroll_menu__button--item {
+  border: 1px solid $black;
+  background-color: $default-background;
+  padding: 5px;
+  border-radius: 25px;
+  margin: 0 5px;
+}
+
+.scroll_menu__button--active {
+  background-color: $charcoal;
 }

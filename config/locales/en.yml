@@ -33,6 +33,7 @@ en:
   delete: Delete
   info: 'Info: '
   catalog:
+    newest_items: Newest added items
     filters:
       filter: Filter
       filters: Filters

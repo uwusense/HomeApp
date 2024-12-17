@@ -1,9 +1,10 @@
 .newest_items
   .newest_items__title
-    p Recently added items
+    h1 = t(:newest_items, scope: 'catalog')
 
   .scroll_menu data-scroll-menu='newest_items'
     .scroll_menu_wrapper
+      .scroll_menu_delimiter
       .scroll_menu_content
         - newest_items.each do |item|
           = link_to catalog_path(item), class: 'scroll_menu_item'
@@ -14,3 +15,4 @@
             .scroll_menu_item__seller
               = item.user.username
       .scroll_menu__button
+      .scroll_menu_delimiter

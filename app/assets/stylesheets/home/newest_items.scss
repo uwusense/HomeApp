@@ -1,11 +1,19 @@
 @import 'variables';
 
-.newest_items {
-}
-
 .newest_items__title {
-  
+  h1 {
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
 }
 
-@media(max-width: $m-width) {
+.scroll_menu_delimiter {
+  height: 20px;
+  width: calc(100% - 10px);
+  background-color: $charcoal;
+  position: relative;
+  right: 5px;
+  margin: 10px;
 }

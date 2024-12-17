@@ -35,11 +35,12 @@ class ScrollMenu {
     this.updateButtons();
     this.$buttons = this.$scrollMenu.find('[data-scroll], [data-arrow]');
 
+    this.$scrollContent.scrollLeft(0);
     this.scrollTo();
   }
 
   scrollTo() {
-    this.$buttons.on('click', (event) => {
+    this.$buttons.off('click').on('click', (event) => {
       if (this.isScrolling) return;
 
       const $button = $(event.currentTarget);
@@ -112,7 +113,7 @@ class ScrollMenu {
       this.$buttonsContainer.append(leftArrow).append(rightArrow);
     } else {
       for (let i = 1; i <= numButtons; i++) {
-        const button = $('<button>').attr('data-scroll', i).text(`Page ${i}`);
+        const button = $('<button>').attr('data-scroll', i)
         button.addClass('scroll_menu__button--item').toggleClass('scroll_menu__button--active', i === 1);
         this.$buttonsContainer.append(button);
       }

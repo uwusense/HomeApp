@@ -127,6 +127,10 @@
     text-decoration: none;
     margin-right: 10px;
     overflow: hidden;
+
+    &:hover {
+      background-color: $dark-gray;
+    }
   }
 
   &__actions {
@@ -144,6 +148,20 @@
 
     i {
       font-size: 30px;
+    }
+
+    &--button {
+      display: flex;
+      align-items: center;
+      border: 1px solid $dark-gray;
+      border-radius: 10px;
+      padding: 5px;
+      background-color: $default-background;
+
+      &:hover {
+        border-color: $green-moss;
+        color: $green-moss;
+      }
     }
   }
 }

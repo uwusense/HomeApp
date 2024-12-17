@@ -48,5 +48,28 @@
     width: fit-content;
     word-break: break-word;
     border: 0;
+
+    &:hover {
+      background-color: $light-purple;
+    }
+  }
+}
+
+.session__forgot_password {
+  text-decoration: none;
+  color: $purple;
+
+  &:hover {
+    color: $light-purple;
+  }
+}
+
+.session_more__register {
+  margin-left: 20px;
+  text-decoration: none;
+  color: $purple;
+
+  &:hover {
+    color: $light-purple;
   }
 }
