@@ -30,4 +30,7 @@
 #profile_menu_box.profile_menu__wrapper
   .profile_menu__content
     = link_to 'My listings', products_path
+    - if current_user.admin
+      = link_to 'Users - admin view', admin_users_path
+      = link_to 'Products - admin view', admin_products_path
 = render 'layouts/header/navigation'

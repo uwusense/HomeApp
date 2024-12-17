@@ -1,0 +1,18 @@
+h1 All Products
+table
+  thead
+    tr
+      th Name
+      th Price
+      th Actions
+  tbody
+    - @products.each do |product|
+      tr
+        td= product.name
+        td= number_to_currency(product.price)
+        td
+          = link_to 'Show', catalog_path(product)
+          = link_to 'Edit', edit_admin_product_path(product)
+
+#pagination
+  = paginate @products

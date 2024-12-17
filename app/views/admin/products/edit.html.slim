@@ -1,0 +1,15 @@
+h1 Edit Product
+
+= form_with(model: [:admin, @product], local: true) do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :price
+    = f.number_field :price, step: 0.01
+
+  .actions
+    = f.submit
+
+= link_to 'Back to List', admin_products_path
