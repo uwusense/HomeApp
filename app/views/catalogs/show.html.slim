@@ -17,6 +17,6 @@
 
     .main_product__contact_button
       - if user_signed_in?
-        = button_to t(:contact, scope: 'products'), chat_rooms_path(participant_id: @item.user.id)
+        = button_to t(:contact, scope: 'products'), chat_rooms_path(participant_id: @item.user.id, product_id: @item.id)
       - else
         = link_to t(:login_for, scope: 'products'), new_user_session_path

@@ -1,4 +1,5 @@
 class ChatRoomsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_chat_room, only: [:destroy]
   before_action :set_current_user_chat_rooms
 
@@ -17,7 +18,7 @@ class ChatRoomsController < ApplicationController
   end
 
   def create
-    service = ChatRoomService.new(current_user.id, params[:participant_id])
+    service = ChatRoomService.new(current_user.id, params[:participant_id].to_i)
     result = service.find_or_create_chat_room
     chat_room = result[:chat_room]
 
@@ -26,19 +27,24 @@ class ChatRoomsController < ApplicationController
       redirect_to chat_room_path(chat_room), notice: notice_message
     else
       Rails.logger.error "Chatroom failed to create: #{result[:error]}"
-      redirect_to product_path(params[:product_id]), alert: 'Failed to create a chat room'
+      redirect_to catalog_path(params[:product_id]), alert: 'Failed to create a chat room'
     end
   end
 
   def destroy
-    if @chat_room.destroy
-      respond_to do |format|
-        format.html { redirect_to chat_rooms_path, notice: 'Chat room deleted successfully.' }
+    if current_user == @chat_room.participant || current_user == @chat_room.creator
+      if @chat_room.destroy
+        respond_to do |format|
+          format.html { redirect_to chat_rooms_path, notice: 'Chat room deleted successfully.' }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to chat_rooms_path, alert: 'Failed to delete chat room.' }
+        end
       end
     else
-      respond_to do |format|
-        format.html { redirect_to chat_rooms_path, alert: 'Failed to delete chat room.' }
-      end
+      flash[:alert] = "Unexpected"
+      redirect_to root_path
     end
   end
 

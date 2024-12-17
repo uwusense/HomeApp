@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       end
     else
       flash[:alert] = 'Unexpected'
-      redirect_to products_path
+      redirect_back fallback_location: products_path
     end
   end
 

@@ -5,6 +5,10 @@ class ChatRoomService
   end
 
   def find_or_create_chat_room
+    if @creator_id == @participant_id
+      return { chat_room: nil, found: false, error: 'Cannot chat with yourself' }
+    end
+
     chat_room = ChatRoom.find_by(
       '(creator_id = :creator AND participant_id = :participant) OR
        (creator_id = :participant AND participant_id = :creator)',

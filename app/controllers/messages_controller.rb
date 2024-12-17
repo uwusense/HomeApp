@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @message = current_user.messages.create(body: msg_params[:body], chat_room_id: params[:chat_room_id])
   end
