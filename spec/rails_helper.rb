@@ -85,7 +85,7 @@ RSpec.configure do |config|
  
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
-  config.include Capybara::DSL, type: :feature
+  config.include Capybara::DSL
 
   config.before(:each, type: :feature) do
     visit root_path
