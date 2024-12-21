@@ -1,15 +1,18 @@
-h1 Edit Product
+.session-wrapper
+  h1= t(:edit_product, scope: 'admin')
+  = form_with(model: [:admin, @product], local: true) do |f|
+    .session-input
+      = f.label :name
+      .session-input__field
+        = f.text_field :name
 
-= form_with(model: [:admin, @product], local: true) do |f|
-  .field
-    = f.label :name
-    = f.text_field :name
+    .session-input
+      = f.label :price
+      .session-input__field
+       = f.number_field :price, step: 0.01
+      br/
+    .grid.grid--justify-content--center
+      = f.submit t(:update, scope: 'admin'), class: 'session__actions-submit'
+    .grid.grid--justify-content--center
+      = link_to t(:back, scope: 'admin'), admin_products_path, class: 'default_button'
 
-  .field
-    = f.label :price
-    = f.number_field :price, step: 0.01
-
-  .actions
-    = f.submit
-
-= link_to t(:admin, scope: 'back'), admin_products_path

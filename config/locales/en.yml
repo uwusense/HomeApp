@@ -119,6 +119,11 @@ en:
     email: Email
     name: Name
     admin: Admin
+    update: Update
+    edit_product: Edit product
+    all_products: All products
+    edit_user: Edit user
+    all_users: All users
   wallets:
     citadele: Citadele
     swedbank: Swedbank
