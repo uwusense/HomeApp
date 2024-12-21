@@ -34,7 +34,7 @@ class Product < ApplicationRecord
   LISTING_FEE = 0.30
 
   has_many_attached :photos
-  has_many :favorited_products
+  has_many :favorited_products, class_name: 'FavoriteProduct'
   has_many :favorited_by, through: :favorited_products, source: :user
 
   belongs_to :user
