@@ -64,15 +64,36 @@ RSpec.describe "Product", type: :feature, js: true do
       attach_file('Photos', Rails.root.join('spec/files/sample_image.jpg'))
 
       expect { click_button 'Create listing for 0.30 €' }.to change { Product.count }.by(1)
-      expect(page).to have_current_path(product_path(Product.last))
+      expect(page).to have_current_path(catalog_path(Product.last))
       expect(page).to have_css('.flash', text: 'Listing created successfully!')
 
       within('.content') do
         expect(page).to have_text(Product.last.name)
         expect(page).to have_text(Product.last.description)
-        expect(page).to have_text(Product.last.category)
         expect(page).to have_text(Product.last.price)
       end
+
+      find('a[href="/"][data-toggle-button="#profile_menu_box"][data-toggle-class=".profile_menu--active"]').click
+
+      within('#profile_menu_box') do
+        find("a[href='/products']").click
+      end
+
+      expect(page).to have_text('Your Products')
+      expect(page).to have_selector('.product_list table tbody tr', count: 2)
+      within('.product_list table tbody') do
+        expect(page).to have_text('Sample Product', count: 2)
+        expect(page).to have_text('€19.99')
+        expect(page).to have_text('This is a test product description.')
+        expect(page).to have_text('Doors & Windows')
+        expect(page).to have_text('New')
+      end
+
+      accept_confirm do
+        first('.default_button--red').click
+      end
+
+      expect(page).to have_text('Sample Product', count: 1)
     end
   end
 

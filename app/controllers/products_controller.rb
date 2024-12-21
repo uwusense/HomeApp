@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
         if current_user.wallet.balance >= Product::LISTING_FEE
           current_user.wallet.update!(balance: current_user.wallet.balance - Product::LISTING_FEE)
           flash[:success] = 'Listing created successfully!'
-          redirect_to product_path(@product) and return
+          redirect_to catalog_path(@product) and return
         else
           flash[:alert] = 'Failed to create listing'
           redirect_to new_product_path and return

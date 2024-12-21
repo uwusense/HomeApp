@@ -10,5 +10,9 @@ FactoryBot.define do
     trait :admin do
       admin { true }
     end
+
+    after(:create) do |user|
+      user.wallet.update(balance: 10000.00)
+    end
   end
 end

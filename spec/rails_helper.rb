@@ -24,6 +24,7 @@ end
 
 Capybara.default_driver = :selenium
 Capybara.javascript_driver = :selenium
+Capybara.default_max_wait_time = 10
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

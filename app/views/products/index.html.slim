@@ -15,7 +15,7 @@ h1 Your Products
         - @products.each do |product|
           tr
             td = product.name
-            td = number_to_currency(product.price)
+            td = number_to_currency(product.price, unit: '€', precision: 2)
             td = truncate(product.description, length: 50)
             td = t(product.category, scope: 'categories')
             td = product.condition.humanize
