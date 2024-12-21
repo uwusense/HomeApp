@@ -10,12 +10,12 @@
   .header-content-right
     = link_to 'Start selling', new_product_path, class: 'header-content-right__selling'
     .header-content-right__actions
-      = link_to favorite_products_path do
-        = ic_icon('star')
       - if !user_signed_in?
         = link_to 'Login', new_user_session_path, class: 'header-content-right__actions--button'
         = link_to 'Register', new_user_registration_path, class: 'header-content-right__actions--button'
       - else
+        = link_to favorite_products_path do
+          = ic_icon('star')
         = link_to root_path, data: { toggle_button: '#profile_menu_box', toggle_class: '.profile_menu--active' } do
           = ic_icon('person')
         = link_to chat_rooms_path do
@@ -30,7 +30,7 @@
 #profile_menu_box.profile_menu__wrapper
   .profile_menu__content
     = link_to 'My listings', products_path
-    - if current_user.admin
+    - if current_user&.admin
       = link_to 'Users - admin view', admin_users_path
       = link_to 'Products - admin view', admin_products_path
 = render 'layouts/header/navigation'
