@@ -24,7 +24,7 @@
           = link_to wallets_path
             .grid
               .header__wallet_amount
-                = number_to_currency(current_user.wallet.balance)
+                = number_to_currency(current_user.wallet.balance, unit: '€', precision: 2)
               = ic_icon('wallet')
         = button_to 'Logout', destroy_user_session_path, method: :delete, class: 'header-content-right__actions--button'
 #profile_menu_box.profile_menu__wrapper
