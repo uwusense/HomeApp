@@ -96,6 +96,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     Product.reindex
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|

@@ -28,7 +28,6 @@ class CatalogsController < ApplicationController
     else
       @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
     end
-    Rails.logger.debug "@items: #{@items}"
     @items = apply_sorting(@items)
   end
 

@@ -8,7 +8,7 @@
       = number_to_currency(item.price, unit: '€', precision: 2)
     .catalog_item__seller
       = item.user.username
-  - if current_user&.favorited_products.include?(item)
+  - if current_user&.favorited_products&.include?(item)
     = button_to favorite_product_path(item.id), method: :delete, class: 'favorite_icon favorite_icon--favorited', data: { turbo: false } do
       = ic_icon('star')
   - elsif current_user
