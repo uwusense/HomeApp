@@ -14,8 +14,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     ActiveRecord::Base.transaction do
-      if @product.save
-        if current_user.wallet.balance >= Product::LISTING_FEE
+      if current_user.wallet.balance >= Product::LISTING_FEE
+        if @product.save
           current_user.wallet.update!(balance: current_user.wallet.balance - Product::LISTING_FEE)
           flash[:success] = 'Listing created successfully!'
           redirect_to catalog_path(@product) and return

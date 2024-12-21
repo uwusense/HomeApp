@@ -95,6 +95,25 @@ RSpec.describe "Product", type: :feature, js: true do
 
       expect(page).to have_text('Sample Product', count: 1)
     end
+
+    it 'cant create product due to insufficent wallet balance' do
+      allow_any_instance_of(Wallet).to receive(:balance).and_return(0.29)
+
+      within('.header-content-right') do
+        click_on I18n.t(:start_selling, scope: 'header')
+      end
+
+      fill_in 'product_name', with: 'Sample Product'
+      fill_in 'product_price', with: '19.99'
+      fill_in 'product_description', with: 'This is a test product description.'
+      select I18n.t('new', scope: 'products'), from: 'Condition'
+      select I18n.t('doors_windows', scope: 'categories'), from: 'Category'
+
+      attach_file('Photos', Rails.root.join('spec/files/sample_image.jpg'))
+
+      expect { click_button 'Create listing for 0.30 €' }.to change { Product.count }.by(0)
+      expect(page).to have_css('.flash', text: 'Failed to create listing')
+    end
   end
 
   describe 'when user is not logged in' do
