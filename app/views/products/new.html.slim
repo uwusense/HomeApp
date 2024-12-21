@@ -1,10 +1,4 @@
 .new_product_wrapper
-  - if @product&.errors&.any?
-    .error-messages
-      h3 Errors prohibited this product from being saved:
-      ul
-        - @product.errors.full_messages.each do |msg|
-          li= msg
   h1 Create a Product
 
   = form_with model: @product, url: products_path, local: true do |f|
@@ -36,4 +30,4 @@
           = f.file_field :photos, multiple: true, accept: 'image/png,image/jpg,image/jpeg'
 
     .new_product_submit_wrapper
-      = f.submit 'Create listing for 0.30 €', class: 'new_product__submit'
+      = f.submit t(:create_listing, scope: 'products'), class: 'new_product__submit'

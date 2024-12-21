@@ -7,15 +7,15 @@
       p Choose Option:
       .grid.wallet_form__type
         = f.radio_button :transaction_type, 'citadele', id: 'transaction_type_citadele'
-        = f.label :transaction_type_citadele, 'Citadele'
+        = f.label :transaction_type_citadele, t(:citadele, scope: 'wallets')
       .grid.wallet_form__type
         = f.radio_button :transaction_type, 'swedbank', id: 'transaction_type_swedbank'
-        = f.label :transaction_type_swedbank, 'Swedbank'
+        = f.label :transaction_type_swedbank, t(:swedbank, scope: 'wallets')
       .wallet_form__amount
-        = f.label :amount, 'Amount'
+        = f.label :amount, t(:amount, scope: 'wallets')
         = f.number_field :amount, step: '0.01'
       p
-        = f.submit 'Add funds'
+        = f.submit t(:add_funds, scope: 'wallets')
   h3 Transaction history
   table
     thead

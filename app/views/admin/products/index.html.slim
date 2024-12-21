@@ -2,17 +2,17 @@ h1 All Products
 table
   thead
     tr
-      th Name
-      th Price
-      th Actions
+      th= t(:name, scope: 'products')
+      th= t(:price, scope: 'products')
+      th
   tbody
     - @products.each do |product|
       tr
         td= product.name
         td= number_to_currency(product.price, unit: '€', precision: 2)
         td
-          = link_to 'Show', catalog_path(product)
-          = link_to 'Edit', edit_admin_product_path(product)
+          = link_to t(:show), catalog_path(product)
+          = link_to t(:edit), edit_admin_product_path(product)
 
 #pagination
   = paginate @products

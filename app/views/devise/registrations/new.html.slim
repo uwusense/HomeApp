@@ -29,4 +29,4 @@
         = f.password_field :password_confirmation, autocomplete: "new-password" 
 
     .session__actions
-      = f.submit "Register", class: "session__actions-submit"
+      = f.submit t(:register, scope: 'user') class: "session__actions-submit"

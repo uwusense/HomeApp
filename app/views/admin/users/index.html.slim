@@ -2,10 +2,10 @@ h1 All Users
 table
   thead
     tr
-      th Email
-      th Name
-      th Admin
-      th Actions
+      th= t(:email, scope: 'admin')
+      th= t(:name, scope: 'admin')
+      th= t(:admin, scope: 'admin')
+      th
   tbody
     - @users.each do |user|
       tr
@@ -13,7 +13,7 @@ table
         td= "#{user.first_name} #{user.last_name}"
         td= user.admin ? 'Yes' : 'No'
         td
-          = link_to 'Edit', edit_admin_user_path(user)
+          = link_to t(:edit), edit_admin_user_path(user)
 
 #pagination
   = paginate @users

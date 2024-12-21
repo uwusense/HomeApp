@@ -9,7 +9,7 @@
     .catalog_items_wrapper
       .hidden.catalog_items__loading
         .loading-indicator
-          p Loading...
+          = t(:loading)
       #items_list.catalog_items_row
         = render partial: 'product', collection: @items, as: :item
     #pagination

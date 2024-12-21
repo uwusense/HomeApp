@@ -24,7 +24,7 @@
             .chat_block_header__user_name
               = @chat_room.target_person(current_user).username
             .chat_block_header__action
-              = button_to 'Delete', chat_room_path(@chat_room), method: :delete, class: 'default_button', data: { turbo: false, controller: "confirm", action: "click->confirm#confirm", message: "Are you sure you want to delete this chat room?" }
+              = button_to t(:delete), chat_room_path(@chat_room), method: :delete, class: 'default_button', data: { turbo: false, controller: "confirm", action: "click->confirm#confirm", message: "Are you sure you want to delete this chat room?" }
           = turbo_frame_tag "chat_room_#{@chat_room.id}_draft_message" do
             = render 'draft_message', chat_room: @chat_room
         = turbo_stream_from @chat_room
@@ -33,8 +33,8 @@
         hr
         .chat_block_actions
           = form_with(model: [@chat_room, @message], remote: true,  data: { controller: "form-reset", action: "turbo:submit-end->form-reset#reset" }) do |form|
-            = form.text_field :body, placeholder: "Type a message...", class: 'chat_input', data: { form_reset_target: "input", action: "input->form-reset#toggleSubmitButton" }
-            = form.submit "Send", class: 'default_button', data: { form_reset_target: "submit", disable_with: false }
+            = form.text_field :body, placeholder: t(:field_placeholder, scope: 'chats'), class: 'chat_input', data: { form_reset_target: "input", action: "input->form-reset#toggleSubmitButton" }
+            = form.submit t(:send), class: 'default_button', data: { form_reset_target: "submit", disable_with: false }
       - else
         .chat_room__unselected
-          | No chatroom selected.
+          = t(:unselected, scope: 'chats')

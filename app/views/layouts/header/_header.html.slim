@@ -1,18 +1,18 @@
 .header
   .header__logo
-    = link_to 'Youbuild', root_path, data: { turbo: false }
+    = link_to t(:youbuild), root_path, data: { turbo: false }
   .header-content
     .header-content__search
       = form_with url: catalogs_path, method: :get, local: true do |f|
-        = f.search_field :query, placeholder: 'Search pre-owned furniture & building materials', value: params[:query], class: 'search-input'
+        = f.search_field :query, placeholder: t(:search, scope: 'catalog'), value: params[:query], class: 'search-input'
         button type='submit'
           = ic_icon('magnifying-glass', class: "search-button")
   .header-content-right
-    = link_to 'Start selling', new_product_path, class: 'header-content-right__selling'
+    = link_to t(:start_selling, scope: 'header'), new_product_path, class: 'header-content-right__selling'
     .header-content-right__actions
       - if !user_signed_in?
-        = link_to 'Login', new_user_session_path, class: 'header-content-right__actions--button'
-        = link_to 'Register', new_user_registration_path, class: 'header-content-right__actions--button'
+        = link_to t(:login, scope: 'header'), new_user_session_path, class: 'header-content-right__actions--button'
+        = link_to t(:register, scope: 'header'), new_user_registration_path, class: 'header-content-right__actions--button'
       - else
         = link_to favorite_products_path do
           = ic_icon('star')
@@ -26,11 +26,11 @@
               .header__wallet_amount
                 = number_to_currency(current_user.wallet.balance, unit: '€', precision: 2)
               = ic_icon('wallet')
-        = button_to 'Logout', destroy_user_session_path, method: :delete, class: 'header-content-right__actions--button'
+        = button_to t(:logout, scope: 'header'), destroy_user_session_path, method: :delete, class: 'header-content-right__actions--button'
 #profile_menu_box.profile_menu__wrapper
   .profile_menu__content
-    = link_to 'My listings', products_path
+    = link_to t(:my_listings, scope: 'header'), products_path
     - if current_user&.admin
-      = link_to 'Users - admin view', admin_users_path
-      = link_to 'Products - admin view', admin_products_path
+      = link_to t(:users, scope: 'header'), admin_users_path
+      = link_to t(:products, scope: 'header'), admin_products_path
 = render 'layouts/header/navigation'

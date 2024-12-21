@@ -28,12 +28,22 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  youbuild: Youbuild
   show: Show
   delete: Delete
   info: 'Info: '
+  edit: Edit
+  back: Back
+  send: Send
+  en: EN
+  lv: LV
+  sign_in: Sign in
+  loading: Loading ...
+  forgot_password: Forgot your password?
   catalog:
+    catalog: Catalog
     newest_items: Newest added items
+    search: Search pre-owned furniture & building materials
     filters:
       filter: Filter
       filters: Filters
@@ -76,6 +86,7 @@ en:
     category: Category
     condition: Condition
     actions: Actions
+    create_listing: Create listing for 0.30 €
   user:
     no_account: You have no account?
     register: Register
@@ -84,7 +95,32 @@ en:
     draft: Draft
     my_chats: My chats
     draft_warning: This is draft and message receiver cant see this chat yet!
+    field_placeholder: Type a message...
+    unselected: No chatroom selected.
   header:
     start_selling: Start selling
+    my_listings: My listings
+    users: Users - admin view
+    products: Product - admin view
+    login: Login
+    register: Register
+    logout: Logout
   flash:
     sign_in: You need to sign in or sign up before continuing.
+  footer:
+    privacy_policy: Privacy policy
+    terms_cond: Terms and conditions
+    refund_policy: Refund policy
+    about_us: About us
+    contacts: Contacts
+    faq: FAQ
+  admin:
+    back: Back to list
+    email: Email
+    name: Name
+    admin: Admin
+  wallets:
+    citadele: Citadele
+    swedbank: Swedbank
+    amount: Amount
+    add_funds: Add funds
