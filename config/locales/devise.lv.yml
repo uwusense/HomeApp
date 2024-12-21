@@ -1,0 +1,63 @@
+lv:
+  devise:
+    confirmations:
+      confirmed: "Jūsu e-pasta adrese ir veiksmīgi apstiprināta."
+      send_instructions: "Dažu minūšu laikā jūs saņemsiet e-pastu ar instrukcijām, kā apstiprināt savu e-pasta adresi."
+      send_paranoid_instructions: "Ja jūsu e-pasta adrese ir mūsu datubāzē, dažu minūšu laikā jūs saņemsiet e-pastu ar instrukcijām, kā apstiprināt savu e-pasta adresi."
+    failure:
+      already_authenticated: "Jūs jau esat pieteicies."
+      inactive: "Jūsu konts vēl nav aktivizēts."
+      invalid: "Nepareiza(s) %{authentication_keys} vai parole."
+      locked: "Jūsu konts ir bloķēts."
+      last_attempt: "Jums ir atlicis viens mēģinājums pirms konta bloķēšanas."
+      not_found_in_database: "Nepareiza(s) %{authentication_keys} vai parole."
+      timeout: "Jūsu sesija ir beigusies. Lūdzu, piesakieties vēlreiz, lai turpinātu."
+      unauthenticated: "Lai turpinātu, jums jāielogojas vai jāreģistrējas."
+      unconfirmed: "Jums jāapstiprina sava e-pasta adrese pirms turpināšanas."
+    mailer:
+      confirmation_instructions:
+        subject: "Apstiprināšanas norādījumi"
+      reset_password_instructions:
+        subject: "Paroles atiestatīšanas norādījumi"
+      unlock_instructions:
+        subject: "Atbloķēšanas norādījumi"
+      email_changed:
+        subject: "E-pasts mainīts"
+      password_change:
+        subject: "Parole mainīta"
+    omniauth_callbacks:
+      failure: "Neizdevās autentificēt no %{kind}, jo \"%{reason}\"."
+      success: "Veiksmīgi autentificēts no %{kind} konta."
+    passwords:
+      no_token: "Jūs nevarat piekļūt šai lapai bez paroles atiestatīšanas e-pasta saites. Ja esat to saņēmis, pārliecinieties, ka izmantojāt pilnu norādīto URL."
+      send_instructions: "Dažu minūšu laikā jūs saņemsiet e-pastu ar norādījumiem, kā atiestatīt savu paroli."
+      send_paranoid_instructions: "Ja jūsu e-pasta adrese ir mūsu datubāzē, dažu minūšu laikā jūs saņemsiet paroles atjaunošanas saiti savā e-pastā."
+      updated: "Jūsu parole ir veiksmīgi mainīta. Tagad esat pieteicies."
+      updated_not_active: "Jūsu parole ir veiksmīgi mainīta."
+    registrations:
+      destroyed: "Uz redzēšanos! Jūsu konts ir veiksmīgi atcelts. Ceram jūs redzēt atkal drīz."
+      signed_up: "Sveicināti! Jūs veiksmīgi reģistrējāties."
+      signed_up_but_inactive: "Jūs veiksmīgi reģistrējāties, taču mēs nevarējām jūs pieteikt, jo jūsu konts vēl nav aktivizēts."
+      signed_up_but_locked: "Jūs veiksmīgi reģistrējāties, taču mēs nevarējām jūs pieteikt, jo jūsu konts ir bloķēts."
+      signed_up_but_unconfirmed: "Ziņojums ar apstiprinājuma saiti ir nosūtīts uz jūsu e-pasta adresi. Lūdzu, sekojiet saitei, lai aktivizētu savu kontu."
+      update_needs_confirmation: "Jūs veiksmīgi atjauninājāt savu kontu, taču mums jāapstiprina jūsu jaunā e-pasta adrese. Lūdzu, pārbaudiet savu e-pastu un sekojiet apstiprinājuma saitei."
+      updated: "Jūsu konts ir veiksmīgi atjaunināts."
+      updated_but_not_signed_in: "Jūsu konts ir veiksmīgi atjaunināts, taču, tā kā parole tika mainīta, jums jāpiesakās vēlreiz."
+    sessions:
+      signed_in: "Veiksmīgi pieteicies."
+      signed_out: "Veiksmīgi atteicies."
+      already_signed_out: "Veiksmīgi atteicies."
+    unlocks:
+      send_instructions: "Dažu minūšu laikā jūs saņemsiet e-pastu ar norādījumiem, kā atbloķēt savu kontu."
+      send_paranoid_instructions: "Ja jūsu konts eksistē, dažu minūšu laikā jūs saņemsiet e-pastu ar norādījumiem, kā to atbloķēt."
+      unlocked: "Jūsu konts ir veiksmīgi atbloķēts. Lūdzu, piesakieties, lai turpinātu."
+  errors:
+    messages:
+      already_confirmed: "jau bija apstiprināts, lūdzu, mēģiniet pieteikties"
+      confirmation_period_expired: "jāapstiprina %{period} laikā, lūdzu, pieprasiet jaunu"
+      expired: "ir beidzies, lūdzu, pieprasiet jaunu"
+      not_found: "nav atrasts"
+      not_locked: "nebija bloķēts"
+      not_saved:
+        one: "1 kļūda neļāva saglabāt %{resource}:"
+        other: "%{count} kļūdas neļāva saglabāt %{resource}:"
