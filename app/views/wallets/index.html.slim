@@ -4,7 +4,7 @@
 
   .wallet_form
     = form_with url: add_funds_wallet_path(@wallet), local: true do |f|
-      p Choose Option:
+      p= t(:choose_option, scope: 'wallets')
       .grid.wallet_form__type
         = f.radio_button :transaction_type, 'citadele', id: 'transaction_type_citadele'
         = f.label :transaction_type_citadele, t(:citadele, scope: 'wallets')
@@ -16,13 +16,13 @@
         = f.number_field :amount, step: '0.01'
       p
         = f.submit t(:add_funds, scope: 'wallets')
-  h3 Transaction history
+  h3= t(:transaction_history, scope: 'wallets')
   table
     thead
       tr
-        th Type
-        th Amount
-        th Date
+        th= t(:type, scope: 'wallets')
+        th= t(:amount, scope: 'wallets')
+        th= t(:date, scope: 'wallets')
     tbody
       - @transactions.each do |transaction|
         tr

@@ -1,32 +1,32 @@
 .new_product_wrapper
-  h1 Create a Product
+  h1= t(:create_product, scope: 'products')
 
   = form_with model: @product, url: products_path, local: true do |f|
     .new_product_form_wrapper
       .new_product_form_left
         .form-group
-          = f.label :name
-          = f.text_field :name, maxlenght: 50
+          = f.label :name, t(:name, scope: 'products')
+          = f.text_field :name, maxlength: 50
 
         .form-group
-          = f.label :price
+          = f.label :price, t(:price, scope: 'products')
           = f.number_field :price, step: 0.01
 
         .form-group
-          = f.label :description
-          = f.text_area :description, maxlength: 500, placeholder: 'Enter up to 500 characters'
+          = f.label :description, t(:description, scope: 'products')
+          = f.text_area :description, maxlength: 500, placeholder: t(:enter_description, scope: 'products')
 
       .new_product_form_right
         .form-group
-          = f.label :condition
-          = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [I18n.t(c, scope: 'products'), c] }), { include_blank: 'Select a condition' }, { class: 'select2', data: { placeholder: 'Choose your condition' } }
+          = f.label :condition, t(:condition, scope: 'products')
+          = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [t(c, scope: 'products'), c] }), { include_blank: t(:select_condition, scope: 'products') }, { class: 'select2', data: { placeholder: t(:choose_condition, scope: 'products') } }
 
         .form-group
-          = f.label :category
-          = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [I18n.t(c, scope: 'categories'), c] }), { include_blank: 'Select a category' }, { class: 'select2', data: { placeholder: 'Choose your category' } }
+          = f.label :category, t(:category, scope: 'products')
+          = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [t(c, scope: 'categories'), c] }), { include_blank: t(:select_category, scope: 'products') }, { class: 'select2', data: { placeholder: t(:choose_category, scope: 'products') } }
 
         .form-group
-          = f.label :photos
+          = f.label :photos, t(:photos, scope: 'products')
           = f.file_field :photos, multiple: true, accept: 'image/png,image/jpg,image/jpeg'
 
     .new_product_submit_wrapper

@@ -13,6 +13,10 @@
 
     @media (max-width: $m-width) {
       display: block;
+
+      input {
+        margin-top: 5px;
+      }
     }
 
     .new_product_form_left {
@@ -130,6 +134,10 @@ th {
 
 tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+
+.admin__actions a{
+  margin: 0 5px;
 }
 
 @media (max-width: 768px) {

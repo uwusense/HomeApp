@@ -10,7 +10,7 @@ table
       tr
         td= product.name
         td= number_to_currency(product.price, unit: '€', precision: 2)
-        td
+        td.admin__actions
           = link_to t(:show), catalog_path(product)
           = link_to t(:edit), edit_admin_product_path(product)
 

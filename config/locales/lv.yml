@@ -1,0 +1,110 @@
+lv:
+  youbuild: Youbuild
+  show: Rādīt
+  delete: Dzēst
+  info: 'Info: '
+  edit: Rediģēt
+  back: Atpakaļ
+  send: Sūtīt
+  en: EN
+  lv: LV
+  sign_in: Pieteikties
+  loading: Ielādē ...
+  forgot_password: Aizmirsāt paroli?
+  catalog:
+    catalog: Katalogs
+    newest_items: Jaunākie pievienotie priekšmeti
+    search: Meklēt lietotu mēbeļu un būvmateriālu
+    filters:
+      filter: Filtrēt
+      filters: Filtri
+      new_in: Jaunumi
+      today: Šodien
+      last_7_days: Pēdējās 7 dienas
+      last_14_days: Pēdējās 14 dienas
+      all_items: Visi priekšmeti
+      price: Cena
+      condition: Stāvoklis
+      to: Līdz
+      all: Visi
+      new: Jauns
+      like_new: Kā jauns
+      used: Lietots
+  categories:
+    new_in: Jaunumi
+    furniture: Mēbeles
+    decor: Dekors
+    lightning: Apgaismojums
+    textiles: Tekstilizstrādājumi
+    tools: Instrumenti
+    building_materials: Būvmateriāli
+    hardware: Aparatūra
+    plumbing: Santehnika
+    electrical: Elektrotehnika
+    heating_cooling: Apkure un vēsināšana
+    doors_windows: Durvis un logi
+  products:
+    create: Izveidot produktu
+    new: Jauns
+    like_new: Kā jauns
+    used: Lietots
+    login_for: Pieslēdzieties, lai rīkotos
+    contact: Sazināties ar pārdevēju
+    seller: 'Pārdevējs: '
+    name: Nosaukums
+    price: Cena
+    description: Apraksts
+    category: Kategorija
+    condition: Stāvoklis
+    actions: Darbības
+    photos: Fotogrāfijas
+    create_listing: Izveidot sludinājumu par 0,30 €
+    enter_description: Ievadiet aprakstu
+    choose_condition: Izvēlieties stadiju
+    choose_category: Izvēlieties kategoriju
+  user:
+    no_account: Nav konta?
+    register: Reģistrēties
+  chats:
+    chats: Čati
+    draft: Melnraksts
+    my_chats: Mani čati
+    draft_warning: Šis ir melnraksts un ziņojuma saņēmējs to vēl nevar redzēt!
+    field_placeholder: Ierakstiet ziņojumu...
+    unselected: Čats nav izvēlēts.
+  header:
+    start_selling: Sākt pārdot
+    my_listings: Mani sludinājumi
+    users: Lietotāji - administrēšanas skats
+    products: Produkti - administrēšanas skats
+    login: Pieteikties
+    register: Reģistrēties
+    logout: Atteikties
+  flash:
+    sign_in: Jums ir jāpieslēdzas vai jāreģistrējas, lai turpinātu.
+  footer:
+    privacy_policy: Privātuma politika
+    terms_cond: Noteikumi un nosacījumi
+    refund_policy: Atmaksa politika
+    about_us: Par mums
+    contacts: Kontaktpersonas
+    faq: BUJ
+  admin:
+    back: Atpakaļ uz sarakstu
+    email: E-pasts
+    name: Vārds
+    admin: Admin
+    update: Atjaunināt
+    edit_product: Rediģēt produktu
+    all_products: Visi produkti
+    edit_user: Rediģēt lietotāju
+    all_users: Visi lietotāji
+  wallets:
+    citadele: Citadele
+    swedbank: Swedbank
+    amount: Summa
+    add_funds: Pievienot līdzekļus
+    choose_option: Izvēlieties iespēju
+    transaction_history: Darījumu vēsture
+    type: Tips
+    date: Datums

@@ -6,8 +6,10 @@
       = t(:catalog, scope: 'catalog')
   .navigation__actions
     .navigation__language
-      = t(:en)
-      = t(:lv)
+      .navigation__language--en
+        = link_to t(:en), root_path(locale: :en), data: { turbo: false }
+      .navigation__language--lv
+        = link_to t(:lv), root_path(locale: :lv), data: { turbo: false }
 
 #navigation_dropdown_box.navigation_dropdown__wrapper{data-toggle-target}
   .navigation_dropdown__content

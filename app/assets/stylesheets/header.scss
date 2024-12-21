@@ -175,6 +175,11 @@
   width: 200px;
   z-index: 5;
   background-color: $white;
+
+  @media (max-width: $m-width) {
+    top: 170px;
+    right: 50vw;
+  }
 }
 
 .profile_menu__content {
@@ -221,5 +226,25 @@
     i {
       color: $dark-gray;
     }
+  }
+}
+
+
+@media (max-width: $m-width) {
+  .header-content-right__selling {
+    margin-right: 0px;
+    width: 115px;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+
+  .header-content-right__actions {
+    gap: 3px;
+    padding-right: 0px;
+    padding-left: 3px;
+  }
+
+  .header-content-right {
+    padding-right: 0px;
   }
 }

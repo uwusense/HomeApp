@@ -86,7 +86,11 @@ en:
     category: Category
     condition: Condition
     actions: Actions
+    photos: Photos
     create_listing: Create listing for 0.30 €
+    enter_description: Enter description
+    choose_condition: Choose condition
+    choose_category: Choose category
   user:
     no_account: You have no account?
     register: Register
@@ -129,3 +133,7 @@ en:
     swedbank: Swedbank
     amount: Amount
     add_funds: Add funds
+    choose_option: Choose option
+    transaction_history: Transaction history
+    type: Type
+    date: Date
