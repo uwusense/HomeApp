@@ -1,32 +1,32 @@
 .session-wrapper
   = render "devise/shared/error_messages", resource: resource 
 
-  h2 Register
+  h2= t(:register, scope: 'user')
 
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .session-input
-      = f.label :email
+      = f.label t(:email, scope: 'admin')
       .session-input__field
         = f.email_field :email, autofocus: true, autocomplete: "email" 
       br/
-      = f.label :username
+      = f.label t(:username)
       .session-input__field
         = f.text_field :username, autofocus: true
       br/
-      = f.label :first_name
+      = f.label t(:first_name)
       .session-input__field
         = f.text_field :first_name, autofocus: true
-      = f.label :last_name
+      = f.label t(:last_name)
       .session-input__field
         = f.text_field :last_name, autofocus: true
       br/
-      = f.label :password 
+      = f.label t(:password)
       .session-input__field
         = f.password_field :password, autocomplete: "new-password" 
       br/
-      = f.label :password_confirmation
+      = f.label t(:password_confirmation)
       .session-input__field
         = f.password_field :password_confirmation, autocomplete: "new-password" 
 
     .session__actions
-      = f.submit t(:register, scope: 'user') class: "session__actions-submit"
+      = f.submit t(:register, scope: 'user'), class: "session__actions-submit"

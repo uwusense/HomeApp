@@ -17,33 +17,33 @@ class ProductsController < ApplicationController
       if current_user.wallet.balance >= Product::LISTING_FEE
         if @product.save
           current_user.wallet.update!(balance: current_user.wallet.balance - Product::LISTING_FEE)
-          flash[:success] = 'Listing created successfully!'
+          flash[:success] = t(:ok_listing, scope: 'flash')
           redirect_to catalog_path(@product) and return
         else
-          flash[:alert] = 'Failed to create listing'
+          flash[:alert] = t(:failed_listing, scope: 'flash')
           redirect_to new_product_path and return
         end
       else
-        flash[:alert] = 'Failed to create listing'
+        flash[:alert] = t(:failed_listing, scope: 'flash')
         redirect_to new_product_path and return
       end
     end
   rescue ActiveRecord::RecordInvalid => e
-    flash[:alert] = "Transaction failed: #{e.message}"
+    flash[:alert] = t(:failed_transaction, scope: 'flash')
     redirect_to new_product_path
   end
 
   def destroy
     if @product.user == current_user
       if @product.destroy
-        flash[:success] = 'Listing deleted successfully!'
+        flash[:success] = t(:ok_deleted_listing, scope: 'flash')
         redirect_to products_path
       else
-        flash[:alert] = 'Failed to delete listing'
+        flash[:alert] = t(:failed_deleted_listing, scope: 'flash')
         redirect_back fallback_location: products_path
       end
     else
-      flash[:alert] = 'Unexpected'
+      flash[:alert] = t(:unexpected, scope: 'flash')
       redirect_back fallback_location: products_path
     end
   end
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Listing was not found'
+    flash[:error] = t(:listing_not_found, scope: 'flash')
     redirect_to products_path
   end
 

@@ -1,12 +1,12 @@
 .session-wrapper
-  h2 Sign in
+  h2= t(:sign_in)
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .session-input
-      = f.label :email
+      = f.label t(:email, scope: 'admin')
       .session-input__field
         = f.email_field :email, autofocus: true, autocomplete: "email"
       br/
-      = f.label :password
+      = f.label t(:password)
       .session-input__field
         = f.password_field :password, autocomplete: "current-password"
 

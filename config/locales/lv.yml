@@ -11,6 +11,11 @@ lv:
   sign_in: Pieteikties
   loading: Ielādē ...
   forgot_password: Aizmirsāt paroli?
+  password: Parole
+  username: Lietotājvārds
+  first_name: Vārds
+  last_name: Uzvārds
+  password_confirmation: Atkārtoti parole
   catalog:
     catalog: Katalogs
     newest_items: Jaunākie pievienotie priekšmeti
@@ -108,3 +113,12 @@ lv:
     transaction_history: Darījumu vēsture
     type: Tips
     date: Datums
+  flash:
+    failed_listing: "Neizdevās izveidot sludinājumu"
+    ok_listing: "Sludinājums veiksmīgi izveidots!"
+    failed_transaction: "Darījums neizdevās"
+    ok_deleted_listing: "Sludinājums veiksmīgi izdzēsts!"
+    failed_deleted_listing: "Neizdevās izdzēst sludinājumu"
+    unexpected: "Neizskaidrojama kļūda"
+    listing_not_found: "Sludinājums nav atrasts"
+    item_not_found: "Prece nav atrasta"

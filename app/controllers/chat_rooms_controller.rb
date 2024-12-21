@@ -43,7 +43,7 @@ class ChatRoomsController < ApplicationController
         end
       end
     else
-      flash[:alert] = "Unexpected"
+      flash[:alert] = t(:unexpected, scope: 'flash')
       redirect_to root_path
     end
   end

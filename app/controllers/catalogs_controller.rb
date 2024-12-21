@@ -12,7 +12,7 @@ class CatalogsController < ApplicationController
   def show
     @item = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Item not found'
+    flash[:error] = t(:item_not_found, scope: 'flash')
     redirect_to catalogs_path
   end
 
