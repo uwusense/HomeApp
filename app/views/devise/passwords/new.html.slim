@@ -1,0 +1,11 @@
+.session-wrapper
+  h2 Forgot your password?
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .session-input
+      = f.label :email
+      .session-input__field
+        = f.email_field :email, autofocus: true, autocomplete: 'email'
+      br/
+    .session__actions
+      = f.submit 'Reset password', class: 'session__actions-submit'

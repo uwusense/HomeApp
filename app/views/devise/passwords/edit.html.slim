@@ -1,0 +1,21 @@
+.session-wrapper
+  h2 Change your password
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = render 'devise/shared/error_messages', resource: resource
+    = f.hidden_field :reset_password_token
+    .session-input
+      .grid
+        = f.label :password, 'New password'
+        - if @minimum_password_length
+          .minimum_password_length= "#{@minimum_password_length} characters min."
+      .session-input__field
+        = f.password_field :password, autofocus: true, autocomplete: 'new-password'
+
+    .session-input
+      = f.label :password_confirmation, 'Confirm new password'
+      .session-input__field
+        = f.password_field :password_confirmation, autocomplete: 'new-password'
+      br/
+    .session__actions
+      = f.submit 'Change my password', class: 'session__actions-submit'
+

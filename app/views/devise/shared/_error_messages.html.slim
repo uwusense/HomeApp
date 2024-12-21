@@ -1,0 +1,8 @@
+- if resource.errors.any?
+  .grid.grid--align-items--center.grid--justify-content--center.error_message
+    .error_message__exclamation !
+    .grid.grid--vertical
+      - resource.errors.full_messages.each do |message|
+        .error_message__text
+          = message
+    .error_message__exclamation !
