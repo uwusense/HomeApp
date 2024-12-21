@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
         redirect_to new_product_path and return
       end
     end
-  rescue ActiveRecord::RecordInvalid => e
+  rescue ActiveRecord::RecordInvalid
     flash[:alert] = t(:failed_transaction, scope: 'flash')
     redirect_to new_product_path
   end
