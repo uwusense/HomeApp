@@ -28,6 +28,23 @@ RSpec.describe "Catalog", js: true do
       expect(page).to have_css('.catalog_item', count: 1)
       expect(page).to have_content('New')
     end
+
+    it 'allows users to filter products by days' do
+      within('.catalog_filters_new_in_options') do
+        find('.catalog_filters_new_in__option[data-filter-date="today"]').click
+      end
+      expect(page).to have_css('.catalog_item', count: 3)
+
+      within('.catalog_filters_new_in_options') do
+        find('.catalog_filters_new_in__option[data-filter-date="last_7_days"]').click
+      end
+      expect(page).to have_css('.catalog_item', count: 0)
+
+      within('.catalog_filters_new_in_options') do
+        find('.catalog_filters_new_in__option[data-filter-date="last_14_days"]').click
+      end
+      expect(page).to have_css('.catalog_item', count: 0)
+    end
   end
 
   describe 'favorites' do
