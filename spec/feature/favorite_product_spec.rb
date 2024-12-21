@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Favorite product", js: true do
+RSpec.describe "Favorite product", type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do

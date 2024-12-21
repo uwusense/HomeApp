@@ -157,6 +157,19 @@ hr {
   flex-direction: row;
 }
 
+.grid--vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid--justify-content--center {
+  justify-content: center;
+}
+
+.grid--align-items--center {
+  align-items: center;
+}
+
 .icon {
   &:hover {
     color: $dark-gray;
@@ -166,4 +179,17 @@ hr {
 a {
   color: $black;
   text-decoration: none;
+}
+
+.error_message {
+  font-size: 1em;
+  border: 1px solid $dark-gray;
+  padding: 10px;
+  border-radius: 5px;
+
+  &__exclamation {
+    margin: 0 10px;
+    color: red;
+    font-size: 1.5em;
+  }
 }

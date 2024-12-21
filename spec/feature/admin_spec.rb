@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin', js: true do
+RSpec.describe 'Admin', type: :feature, js: true do
   let(:admin) { create(:user, :admin, username: 'admin') }
   let(:user) { create(:user) }
   let!(:product) { create_list(:product, 5, user: user) }

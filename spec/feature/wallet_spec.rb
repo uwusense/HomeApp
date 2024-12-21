@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Wallet', js: true do
+RSpec.describe 'Wallet', type: :feature, js: true do
   let(:user) { create(:user) }
 
   describe 'when user is authorized' do

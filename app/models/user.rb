@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :favorited_products, through: :favorite_products, source: :product
   has_one :wallet, dependent: :destroy
 
+  validates_uniqueness_of :username
+
   after_create :create_user_wallet
 
   def chat_rooms

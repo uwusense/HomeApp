@@ -14,6 +14,7 @@ require 'pry'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'selenium-webdriver'
+require 'capybara/email/rspec'
 
 Capybara.register_driver :selenium do |app|
   options = Selenium::WebDriver::Firefox::Options.new

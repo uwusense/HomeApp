@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Catalog", js: true do
+RSpec.describe "Catalog", type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do
