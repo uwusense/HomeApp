@@ -114,11 +114,38 @@ lv:
     type: Tips
     date: Datums
   flash:
-    failed_listing: "Neizdevās izveidot sludinājumu"
-    ok_listing: "Sludinājums veiksmīgi izveidots!"
-    failed_transaction: "Darījums neizdevās"
-    ok_deleted_listing: "Sludinājums veiksmīgi izdzēsts!"
-    failed_deleted_listing: "Neizdevās izdzēst sludinājumu"
-    unexpected: "Neizskaidrojama kļūda"
-    listing_not_found: "Sludinājums nav atrasts"
-    item_not_found: "Prece nav atrasta"
+    failed_listing: Neizdevās izveidot sludinājumu
+    ok_listing: Sludinājums veiksmīgi izveidots!
+    failed_transaction: Darījums neizdevās
+    ok_deleted_listing: Sludinājums veiksmīgi izdzēsts!
+    failed_deleted_listing: Neizdevās izdzēst sludinājumu
+    unexpected: Neizskaidrojama kļūda
+    listing_not_found: Sludinājums nav atrasts
+    item_not_found: Prece nav atrasta
+    ok_funds: Līdzekļi papildināti veikmsīgi!
+    failed_funds: Neizdevās papildināt līdzekļus
+    ok_favorite_prod: Produkts pievienots izlasei veiksmīgi!
+    failed_favorite_prod: Neizdevās produktu pievienot izlasei
+    ok_remove_favorite_prod: Produkts noņemts no izlases veiksmīgi!
+    failed_remove_favorite_prod: Neizdevās produktu noņemt no izlases
+  activerecord:
+    attributes:
+      user:
+        email: E-pasts
+        password: Parole
+        first_name: Vārds
+        last_name: Uzvārds
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: nedrīkst būt tukšs
+            password:
+              blank: nedrīkst būt tukša
+            first_name:
+              blank: nedrīkst būt tukšs
+            last_name:
+              blank: nedrīkst būt tukšs
+      messages:
+        blank: Šis lauks nedrīkst būt tukšs

@@ -31,6 +31,9 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :username
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   after_create :create_user_wallet
 
   def chat_rooms

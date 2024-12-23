@@ -151,3 +151,9 @@ en:
     unexpected: Unexpected
     listing_not_found: Listing was not found
     item_not_found: Item not found
+    ok_funds: Funds added successfully!
+    failed_funds: Failed to add funds
+    ok_favorite_prod: Product added to favorites
+    failed_favorite_prod: Couldnt add product to favorites
+    ok_remove_favorite_prod: Product removed from favorites successfully
+    failed_remove_favorite_prod: Couldnt remove product from favorites

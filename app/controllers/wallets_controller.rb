@@ -9,10 +9,10 @@ class WalletsController < ApplicationController
   def add_funds
     amount = params[:amount].to_d
     type = params[:transaction_type]
-    if @wallet.update_balance!(amount, type)
-      redirect_to wallets_path, notice: 'Funds added successfully!'
+    if amount > 0 && @wallet.update_balance!(amount, type)
+      redirect_to wallets_path, notice: t(:ok_funds, scope: 'flash')
     else
-      redirect_to wallets_path, alert: 'Failed to add funds'
+      redirect_to wallets_path, alert: t(:failed_funds, scope: 'flash')
     end
   end
 
