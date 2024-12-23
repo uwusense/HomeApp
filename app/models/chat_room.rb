@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: chat_rooms
+#
+#  id              :bigint           not null, primary key
+#  topic           :string
+#  draft           :boolean
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  creator_id      :bigint           not null
+#  participant_id  :bigint           not null
+#  last_message_at :datetime
+#
 class ChatRoom < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :participant, class_name: 'User', foreign_key: 'participant_id'

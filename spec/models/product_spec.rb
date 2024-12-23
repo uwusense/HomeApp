@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  price       :decimal(10, 2)   not null
+#  description :string           not null
+#  category    :string           not null
+#  photo_url   :string
+#  condition   :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
+#
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do

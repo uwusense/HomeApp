@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id               :bigint           not null, primary key
+#  wallet_id        :bigint           not null
+#  amount           :string
+#  transaction_type :string
+#  description      :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
 class Transaction < ApplicationRecord
   belongs_to :wallet
 
