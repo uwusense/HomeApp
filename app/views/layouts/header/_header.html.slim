@@ -27,10 +27,11 @@
                 = number_to_currency(current_user.wallet.balance, unit: '€', precision: 2)
               = ic_icon('wallet')
         = button_to t(:logout, scope: 'header'), destroy_user_session_path, method: :delete, class: 'header-content-right__actions--button'
-#profile_menu_box.profile_menu__wrapper
-  .profile_menu__content
-    = link_to t(:my_listings, scope: 'header'), products_path
-    - if current_user&.admin
-      = link_to t(:users, scope: 'header'), admin_users_path
-      = link_to t(:products, scope: 'header'), admin_products_path
+.dropdown_wrapper
+  #profile_menu_box.profile_menu__wrapper
+    .profile_menu__content
+      = link_to t(:my_listings, scope: 'header'), products_path
+      - if current_user&.admin
+        = link_to t(:users, scope: 'header'), admin_users_path
+        = link_to t(:products, scope: 'header'), admin_products_path
 = render 'layouts/header/navigation'
