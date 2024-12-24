@@ -11,6 +11,8 @@
     .grid
       .main_product__price
         = number_to_currency(@item.price, unit: '€', precision: 2)
+        - if @item.rent?
+          = t(:rent_day, scope: 'products')
       .main_product__seller
         = t(:seller, scope: 'products')
         = @item.user.username

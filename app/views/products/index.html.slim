@@ -10,6 +10,7 @@ h1 Your Products
           th= t(:description, scope: 'products')
           th= t(:category, scope: 'products')
           th= t(:condition, scope: 'products')
+          th= t(:listing_type, scope: 'products')
           th= t(:actions, scope: 'products')
       tbody
         - @products.each do |product|
@@ -19,6 +20,7 @@ h1 Your Products
             td = truncate(product.description, length: 50)
             td = t(product.category, scope: 'categories')
             td = product.condition.humanize
+            td = t(product.listing_type, scope: 'products')
             td
               .grid
                 = link_to t(:show), catalog_path(product), class: 'default_button default_button--green'

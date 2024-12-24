@@ -7,4 +7,6 @@ import "components/toggle_menu";
 import "components/catalog_filter";
 import "components/flash_messages";
 import "components/scroll_menu";
-import "components/select2"
+import "components/select2";
+import "components/tooltip";
+import "bootstrap";

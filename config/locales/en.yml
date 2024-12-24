@@ -96,6 +96,13 @@ en:
     enter_description: Enter description
     choose_condition: Choose condition
     choose_category: Choose category
+    sell: Sell
+    rent: Rent
+    choose_listing_type: Choose listing type
+    listing_type: Listing type
+    rent_day: ' / per day'
+    listing_type_info: In rent case provide price per day
+
   user:
     no_account: You have no account?
     register: Register
@@ -157,3 +164,6 @@ en:
     failed_favorite_prod: Couldnt add product to favorites
     ok_remove_favorite_prod: Product removed from favorites successfully
     failed_remove_favorite_prod: Couldnt remove product from favorites
+  errors:
+    invalid_category: "%{value} is not a valid category"
+    invalid_listing_type: "%{value} is not a valid listing type"

@@ -67,6 +67,12 @@ lv:
     enter_description: Ievadiet aprakstu
     choose_condition: Izvēlieties stadiju
     choose_category: Izvēlieties kategoriju
+    sell: Pārdot
+    rent: Izīrēt
+    choose_listing_type: Izvēlieties sludinājuma veidu
+    listing_type: Sludinājuma veids
+    rent_day: ' / dienā'
+    listing_type_info: Produkta īres gadījumā cenu norādīt par dienu
   user:
     no_account: Nav konta?
     register: Reģistrēties
@@ -149,3 +155,6 @@ lv:
               blank: nedrīkst būt tukšs
       messages:
         blank: Šis lauks nedrīkst būt tukšs
+  errors:
+    invalid_category: "%{value} nav derīga kategorija"
+    invalid_listing_type: "%{value} nav derīgs sludinājuma veids"

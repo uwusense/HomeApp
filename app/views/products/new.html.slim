@@ -10,8 +10,10 @@
 
         .form-group
           = f.label :price, t(:price, scope: 'products')
-          = f.number_field :price, step: 0.01
-
+          .grid.grid--align-items--center
+            = f.number_field :price, step: 0.01
+            button type="button" class="tooltip-info" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="#{t(:listing_type_info, scope: 'products')}"
+              | i
         .form-group
           = f.label :description, t(:description, scope: 'products')
           = f.text_area :description, maxlength: 500, placeholder: t(:enter_description, scope: 'products')
@@ -19,11 +21,15 @@
       .new_product_form_right
         .form-group
           = f.label :condition, t(:condition, scope: 'products')
-          = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [t(c, scope: 'products'), c] }), { include_blank: t(:select_condition, scope: 'products') }, { class: 'select2', data: { placeholder: t(:choose_condition, scope: 'products') } }
+          = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [t(c, scope: 'products'), c] }), { include_blank: true }, { class: 'select2', data: { placeholder: t(:choose_condition, scope: 'products') } }
 
         .form-group
           = f.label :category, t(:category, scope: 'products')
-          = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [t(c, scope: 'categories'), c] }), { include_blank: t(:select_category, scope: 'products') }, { class: 'select2', data: { placeholder: t(:choose_category, scope: 'products') } }
+          = f.select :category, options_for_select(Product::CATEGORIES.map { |c| [t(c, scope: 'categories'), c] }), { include_blank: true }, { class: 'select2', data: { placeholder: t(:choose_category, scope: 'products') } }
+
+        .form-group
+          = f.label :listing_type, t(:listing_type, scope: 'products')
+          = f.select :listing_type, options_for_select(Product::LISTING_TYPE.map { |l| [t(l, scope: 'products'), l] }), { include_blank: true }, { class: 'select2', data: { placeholder: t(:choose_listing_type, scope: 'products') } }
 
         .form-group
           = f.label :photos, t(:photos, scope: 'products')

@@ -1,0 +1,24 @@
+@import 'variables';
+
+.custom-tooltip {
+  border: 1px solid $black;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $white;
+}
+
+.tooltip-info {
+  background-color: transparent;
+  border: 1px solid $cherry-red;
+  border-radius: 25px;
+  color: $cherry-red;
+  font-size: 1em;
+  font-weight: 700;
+  height: 30px;
+  margin-left: 10px;
+  width: 30px;
+
+  @media(max-width: $m-width) {
+    margin-top: 5px;
+  }
+}

@@ -72,6 +72,7 @@ gem 'webdrivers', '~> 4.0'
 gem 'capybara-email'
 gem 'shoulda-matchers', '~> 6.0'
 gem 'rails-controller-testing'
+gem 'bootstrap', '~> 5.3.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
