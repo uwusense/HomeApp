@@ -19,7 +19,7 @@ h1 Your Products
             td = number_to_currency(product.price, unit: '€', precision: 2)
             td = truncate(product.description, length: 50)
             td = t(product.category, scope: 'categories')
-            td = product.condition.humanize
+            td = t(product.condition, scope: 'products')
             td = t(product.listing_type, scope: 'products')
             td
               .grid

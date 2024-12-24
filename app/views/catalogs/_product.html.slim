@@ -6,6 +6,8 @@
       = item.name
     .catalog_item__price
       = number_to_currency(item.price, unit: '€', precision: 2)
+      - if item.rent?
+        = t(:rent_day, scope: 'products')
     .catalog_item__seller
       = item.user.username
   - if current_user&.favorited_products&.include?(item)

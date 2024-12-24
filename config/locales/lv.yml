@@ -18,6 +18,7 @@ lv:
   password_confirmation: Atkārtoti parole
   positive: Jā
   negative: Nē
+  not_authorized: Neesat autorizēts
   catalog:
     catalog: Katalogs
     newest_items: Jaunākie sludinājumi
@@ -78,6 +79,11 @@ lv:
   user:
     no_account: Nav konta?
     register: Reģistrēties
+    new_password: Jaunā parole
+    min_char: simboli min.
+    new_password_confirm: Jaunās paroles apstiprinājums
+    change_password: Mainīt paroli
+    change_password_title: Paroles maiņa
   chats:
     chats: Čati
     draft: Melnraksts
@@ -136,25 +142,42 @@ lv:
     failed_favorite_prod: Neizdevās produktu pievienot izlasei
     ok_remove_favorite_prod: Produkts noņemts no izlases veiksmīgi!
     failed_remove_favorite_prod: Neizdevās produktu noņemt no izlases
+    user_updated: Lietotājs veiksmīgi atjaunots
+    product_updated: Produkts veiksmīgi atjaunots
   activerecord:
     attributes:
       user:
         email: E-pasts
         password: Parole
+        password_confirmation: Parolēm
         first_name: Vārds
         last_name: Uzvārds
+      product:
+        name: Nosaukums
+        price: Cena
     errors:
       models:
         user:
           attributes:
             email:
               blank: nedrīkst būt tukšs
+              taken: jau ir reģistrēts
             password:
               blank: nedrīkst būt tukša
+              too_short: ir pārāk īsa
+            password_confirmation:
+              confirmation: ir jāsakrīt
             first_name:
               blank: nedrīkst būt tukšs
             last_name:
               blank: nedrīkst būt tukšs
+        product:
+          attributes:
+            name:
+              blank: nedrīkst būt tukšs
+            price:
+              blank: nedrīkst būt tukša
+              not_a_number: nav derīga
       messages:
         blank: Šis lauks nedrīkst būt tukšs
   errors:

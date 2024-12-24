@@ -47,6 +47,7 @@ en:
   password_confirmation: Password confirmation
   positive: 'Yes'
   negative: 'No'
+  not_authorized: You are not authorized
   catalog:
     catalog: Catalog
     newest_items: Newest added items
@@ -108,6 +109,11 @@ en:
   user:
     no_account: You have no account?
     register: Register
+    new_password: New password
+    min_char: characters min.
+    new_password_confirm: Confirm new password'
+    change_password: Change my password
+    change_password_title: Change your password
   chats:
     chats: Chats
     draft: Draft
@@ -166,6 +172,8 @@ en:
     failed_favorite_prod: Couldnt add product to favorites
     ok_remove_favorite_prod: Product removed from favorites successfully
     failed_remove_favorite_prod: Couldnt remove product from favorites
+    user_updated: User updated successfully
+    product_updated: Product updated successfully
   errors:
     invalid_category: "%{value} is not a valid category"
     invalid_listing_type: "%{value} is not a valid listing type"

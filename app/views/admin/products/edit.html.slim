@@ -1,13 +1,15 @@
 .session-wrapper
+  = render "devise/shared/error_messages", resource: @product
+
   h1= t(:edit_product, scope: 'admin')
   = form_with(model: [:admin, @product], local: true) do |f|
     .session-input
-      = f.label :name
+      = f.label t(:name, scope: 'products')
       .session-input__field
         = f.text_field :name
 
     .session-input
-      = f.label :price
+      = f.label t(:price, scope: 'products')
       .session-input__field
        = f.number_field :price, step: 0.01
       br/

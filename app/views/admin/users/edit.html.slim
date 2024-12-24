@@ -1,4 +1,6 @@
 .session-wrapper
+  = render "devise/shared/error_messages", resource: @user
+
   h1= t(:edit_user, scope: 'admin')
   = form_with(model: [:admin, @user], local: true) do |f|
     .session-input

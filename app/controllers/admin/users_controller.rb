@@ -12,9 +12,9 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to [:admin, @user], notice: "User updated successfully."
+      redirect_to [:admin, @user], notice: t(:user_updated, scope: 'flash')
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

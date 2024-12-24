@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin!
-    redirect_to root_path, alert: 'Not authorized' unless admin?
+    redirect_to root_path, alert: t(:not_authorized) unless admin?
   end
 
   def default_url_options
