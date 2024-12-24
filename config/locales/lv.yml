@@ -18,7 +18,7 @@ lv:
   password_confirmation: Atkārtoti parole
   catalog:
     catalog: Katalogs
-    newest_items: Jaunākie pievienotie priekšmeti
+    newest_items: Jaunākie sludinājumi
     search: Meklēt lietotu mēbeļu un būvmateriālu
     filters:
       filter: Filtrēt
