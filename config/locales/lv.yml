@@ -16,6 +16,8 @@ lv:
   first_name: Vārds
   last_name: Uzvārds
   password_confirmation: Atkārtoti parole
+  positive: Jā
+  negative: Nē
   catalog:
     catalog: Katalogs
     newest_items: Jaunākie sludinājumi

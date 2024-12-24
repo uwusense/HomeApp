@@ -41,10 +41,12 @@ en:
   loading: Loading ...
   forgot_password: Forgot your password?
   password: Password
-  username: Lietotājvārds
+  username: Username
   first_name: First name
   last_name: Last name
   password_confirmation: Password confirmation
+  positive: 'Yes'
+  negative: 'No'
   catalog:
     catalog: Catalog
     newest_items: Newest added items
