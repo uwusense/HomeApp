@@ -206,6 +206,16 @@
     background-color: $white;
     text-align: center;
   }
+
+  .catalog_filters {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .catalog_filters_new_in {
+      justify-content: flex-start;
+    }
+  }
 }
 
 .main_product_wrapper {
