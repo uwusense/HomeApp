@@ -10,10 +10,13 @@ class ChatRoomsController < ApplicationController
   end
 
   def show
-    @chat_room = ChatRoom.find(params[:id])
+    @chat_room = current_user.chat_rooms.find(params[:id])
     @message = Message.new
     @messages = @chat_room.messages.order(created_at: :asc)
+    render 'index'
 
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = t(:chat_room_not_found, scope: 'flash')
     render 'index'
   end
 
@@ -23,11 +26,11 @@ class ChatRoomsController < ApplicationController
     chat_room = result[:chat_room]
 
     if chat_room
-      notice_message = result[:found] ? 'Chat room already exists with this user' : 'Chat room created successfully'
+      notice_message = result[:found] ? t(:existing_chat_room, scope: 'chats') : t(:new_chat_room, scope: 'chats')
       redirect_to chat_room_path(chat_room), notice: notice_message
     else
       Rails.logger.error "Chatroom failed to create: #{result[:error]}"
-      redirect_to catalog_path(params[:product_id]), alert: 'Failed to create a chat room'
+      redirect_to catalog_path(params[:product_id]), alert: t(:failed_chat_room, scope: 'flash')
     end
   end
 
@@ -35,11 +38,11 @@ class ChatRoomsController < ApplicationController
     if current_user == @chat_room.participant || current_user == @chat_room.creator
       if @chat_room.destroy
         respond_to do |format|
-          format.html { redirect_to chat_rooms_path, notice: 'Chat room deleted successfully.' }
+          format.html { redirect_to chat_rooms_path, notice: t(:ok_delete_chat_room, scope: 'flash') }
         end
       else
         respond_to do |format|
-          format.html { redirect_to chat_rooms_path, alert: 'Failed to delete chat room.' }
+          format.html { redirect_to chat_rooms_path, alert: t(:failed_delete_chat_room, scope: 'flash') }
         end
       end
     else

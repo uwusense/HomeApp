@@ -121,6 +121,8 @@ en:
     draft_warning: This is draft and message receiver cant see this chat yet!
     field_placeholder: Type a message...
     unselected: No chatroom selected.
+    existing_chat_room: Chat room already exists with this user
+    new_chat_room: Chat room created successfully
   header:
     start_selling: Start selling
     my_listings: My listings
@@ -174,6 +176,10 @@ en:
     failed_remove_favorite_prod: Couldnt remove product from favorites
     user_updated: User updated successfully
     product_updated: Product updated successfully
+    failed_chat_room: Failed to create a chat room
+    chat_room_not_found: Chat room not found
+    ok_delete_chat_room: Chat room deleted successfully
+    failed_delete_chat_room: Failed to delete chat room
   errors:
     invalid_category: "%{value} is not a valid category"
     invalid_listing_type: "%{value} is not a valid listing type"

@@ -87,10 +87,12 @@ lv:
   chats:
     chats: Čati
     draft: Melnraksts
-    my_chats: Mani čati
+    my_chats: Manas tērzētavas istabas
     draft_warning: Šis ir melnraksts un ziņojuma saņēmējs to vēl nevar redzēt!
     field_placeholder: Ierakstiet ziņojumu...
-    unselected: Čats nav izvēlēts.
+    unselected: Tērzētavas istaba nav izvēlēta.
+    existing_chat_room: Tērzētavas istaba jau eksistē ar šo lietotāju
+    new_chat_room: Tērzētavas istaba veiksmīgi izveidota
   header:
     start_selling: Sākt pārdot
     my_listings: Mani sludinājumi
@@ -144,6 +146,10 @@ lv:
     failed_remove_favorite_prod: Neizdevās produktu noņemt no izlases
     user_updated: Lietotājs veiksmīgi atjaunots
     product_updated: Produkts veiksmīgi atjaunots
+    failed_chat_room: Neizdevās izveidot tērzētavas istabu
+    chat_room_not_found: Neizdevās atrast tērzētavas istabu
+    ok_delete_chat_room: Tērzētavas istaba tika veiksmīgi dzēsta!
+    failed_delete_chat_room: Neizdevās izdzēst tērzētavas istabu
   activerecord:
     attributes:
       user:
