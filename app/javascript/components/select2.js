@@ -1,5 +1,3 @@
-let isInitialized = false;
-
 function initializeSelect2() {
   $('.sort-select').select2({
       minimumResultsForSearch: Infinity
