@@ -23,8 +23,6 @@ class CatalogsController < ApplicationController
 
     if query.present?
       @items = Product.search(query, where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
-    elsif @category == 'new_in'
-      @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
     else
       @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
     end
