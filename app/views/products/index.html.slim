@@ -1,4 +1,4 @@
-h1 Your Products
+h1= t(:your_products, scope: 'products')
 
 - if @products.any?
   .product_list
@@ -28,4 +28,4 @@ h1 Your Products
   #pagination
     = paginate @products
 - else
-  p You have no products yet.
+  p= t(:your_products_none, scope: 'products')

@@ -76,6 +76,8 @@ lv:
     listing_type: Sludinājuma veids
     rent_day: ' / dienā'
     listing_type_info: Produkta īres gadījumā cenu norādīt par dienu
+    your_products: Jūsu produkti
+    your_products_none: Jums vēl nav produkti.
   user:
     no_account: Nav konta?
     register: Reģistrēties

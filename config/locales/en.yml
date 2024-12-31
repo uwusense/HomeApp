@@ -105,6 +105,8 @@ en:
     listing_type: Listing type
     rent_day: ' / per day'
     listing_type_info: In rent case provide price per day
+    your_products: Your products
+    your_products_none: You have no products yet.
 
   user:
     no_account: You have no account?
