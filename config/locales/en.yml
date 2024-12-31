@@ -81,7 +81,7 @@ en:
     heating_cooling: Heating & Cooling
     doors_windows: Doors & Windows
   products:
-    create: Create a Product
+    create_product: Create a Product
     new: New
     like_new: Like new
     used: Used

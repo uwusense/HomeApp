@@ -52,7 +52,7 @@ lv:
     heating_cooling: Apkure un vēsināšana
     doors_windows: Durvis un logi
   products:
-    create: Izveidot produktu
+    create_product: Izveidot produktu
     new: Jauns
     like_new: Kā jauns
     used: Lietots

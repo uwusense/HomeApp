@@ -18,8 +18,6 @@
           |   background-color: #DDD5F3;
           | }
         #chat_room.chat_block_header
-          .chat_block_header__title
-            = @chat_room.topic
           .chat_inline
             .chat_block_header__user_name
               = @chat_room.target_person(current_user).username
