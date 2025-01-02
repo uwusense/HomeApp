@@ -103,8 +103,6 @@ lv:
     login: Pieteikties
     register: Reģistrēties
     logout: Atteikties
-  flash:
-    sign_in: Jums ir jāpieslēdzas vai jāreģistrējas, lai turpinātu.
   footer:
     privacy_policy: Privātuma politika
     terms_cond: Noteikumi un nosacījumi
@@ -152,6 +150,8 @@ lv:
     chat_room_not_found: Neizdevās atrast tērzētavas istabu
     ok_delete_chat_room: Tērzētavas istaba tika veiksmīgi dzēsta!
     failed_delete_chat_room: Neizdevās izdzēst tērzētavas istabu
+    sign_in: Jums ir jāpieslēdzas vai jāreģistrējas, lai turpinātu.
+    chat_w_yourself: Nevar izveidot tērzētavas istabu ar sevi
   activerecord:
     attributes:
       user:

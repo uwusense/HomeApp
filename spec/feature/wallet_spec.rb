@@ -26,7 +26,7 @@ RSpec.describe 'Wallet', type: :feature, js: true do
       within('.wallet_form') do
         choose 'Citadele'
         fill_in 'Amount', with: '20.00'
-        click_button 'Add funds'
+        expect { click_button 'Add funds' }.to change { Transaction.count }.by(1)
       end
 
       expect(page).to have_content('Balance: €10,020.00')

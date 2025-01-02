@@ -6,7 +6,7 @@ class ChatRoomService
 
   def find_or_create_chat_room
     if @creator_id == @participant_id
-      return { chat_room: nil, found: false, error: 'Cannot chat with yourself' }
+      return { chat_room: nil, found: false, error: I18n.t(:chat_w_yourself, scope: 'flash') }
     end
 
     chat_room = ChatRoom.find_by(

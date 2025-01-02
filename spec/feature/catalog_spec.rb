@@ -69,8 +69,9 @@ RSpec.describe "Catalog", type: :feature, js: true do
     let(:product) { Product.where(name: 'Expensive one').first }
 
     it 'displays the product details' do
+      binding.pry
       find('.catalog_item__title', text: product.name).click
-      expect(page).to have_current_path(catalog_path(product.id))
+      expect(page).to have_current_path(catalog_path(id: product.id))
       within('.main_product_wrapper') do
         expect(page).to have_content(product.name)
         expect(page).to have_content(product.description)

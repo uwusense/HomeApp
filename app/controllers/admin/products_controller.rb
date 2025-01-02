@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to [:admin, @product], notice: t(:product_updated, scope: 'admin')
+      redirect_to [:admin, @product], notice: t(:product_updated, scope: 'flash')
     else
       render :edit, status: :unprocessable_entity
     end

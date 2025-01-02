@@ -6,11 +6,9 @@ RSpec.describe "Catalog", type: :feature, js: true do
   let!(:product_1) { create(:product, user: user_1) }
   let!(:product_2) { create(:product, user: user_2) }
 
-  before do
-    login(user_1)
-  end
-
   describe 'when creates a chatroom' do
+    before { login(user_1) }
+
     it 'has correct content' do
       visit catalogs_path(tab: 'doors_windows')
       find('.catalog_item__seller', text: product_2.user.username).click
@@ -44,6 +42,7 @@ RSpec.describe "Catalog", type: :feature, js: true do
 
   describe 'when user has chat' do
     before do
+      login(user_1)
       visit catalogs_path(tab: 'doors_windows')
       find('.catalog_item__seller', text: product_2.user.username).click
       click_button 'Contact with seller'
@@ -117,6 +116,17 @@ RSpec.describe "Catalog", type: :feature, js: true do
       expect(user_1.created_chat_rooms.count).to eq(0)
       expect(user_1.chat_rooms.count).to eq(0)
       expect(user_2.participating_chat_rooms.count).to eq(0)
+    end
+  end
+
+  describe 'when user is not logged in' do
+    it 'chatting is not an option' do
+      visit catalogs_path(tab: 'doors_windows')
+      find('.catalog_item__seller', text: product_2.user.username).click
+
+      expect(page).to have_no_text('Contact with seller')
+      click_on 'Login for more actions'
+      expect(page).to have_current_path("/en/users/sign_in")
     end
   end
 end

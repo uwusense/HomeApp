@@ -107,7 +107,6 @@ en:
     listing_type_info: In rent case provide price per day
     your_products: Your products
     your_products_none: You have no products yet.
-
   user:
     no_account: You have no account?
     register: Register
@@ -133,8 +132,6 @@ en:
     login: Login
     register: Register
     logout: Logout
-  flash:
-    sign_in: You need to sign in or sign up before continuing.
   footer:
     privacy_policy: Privacy policy
     terms_cond: Terms and conditions
@@ -182,6 +179,8 @@ en:
     chat_room_not_found: Chat room not found
     ok_delete_chat_room: Chat room deleted successfully
     failed_delete_chat_room: Failed to delete chat room
+    sign_in: You need to sign in or sign up before continuing.
+    chat_w_yourself: Cannot chat with yourself
   errors:
     invalid_category: "%{value} is not a valid category"
     invalid_listing_type: "%{value} is not a valid listing type"
