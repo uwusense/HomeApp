@@ -6,14 +6,15 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 5px 0;
+  padding: 10px 0;
 
   .navigation__items {
     display: flex;
     flex-grow: 1;
     margin-left: 40px;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
+    scrollbar-width: thin;
   }
 
   .navigation__item {
@@ -23,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-wrap: nowrap;
 
     &:hover {
       background-color: $dark-gray;
@@ -52,6 +54,7 @@
     float: right;
     margin-right: 40px;
     margin-left: 20px;
+    height: 42px;
 
     a, button {
       color: $white;

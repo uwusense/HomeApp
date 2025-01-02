@@ -3,7 +3,7 @@
     .catalog_item__photo
       = image_tag url_for(item.photos.first) if item.photos.present?
     .catalog_item__title
-      = item.name
+      = truncate(item.name, length: 20, omission: '...')
     .catalog_item__price
       = number_to_currency(item.price, unit: '€', precision: 2)
       - if item.rent?

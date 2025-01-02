@@ -3,7 +3,7 @@ class WalletsController < ApplicationController
   before_action :set_wallet
 
   def index
-    @transactions = @wallet.transactions
+    @transactions = @wallet.transactions.order(created_at: :desc)
   end
 
   def add_funds

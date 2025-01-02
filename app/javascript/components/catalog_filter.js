@@ -13,6 +13,7 @@ class CatalogFilter {
     });
 
     $(document).on('change', '.sort-select', (e) => {
+      e.preventDefault();
       const target = $(e.currentTarget);
       this.processSorting(target);
     });

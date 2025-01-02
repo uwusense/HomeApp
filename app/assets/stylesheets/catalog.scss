@@ -32,9 +32,11 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   gap: 10px;
   justify-content: start;
+  min-width: 510px;
 
   @media (max-width: $m-width) {
     grid-template-columns: repeat(2, 150px);
+    min-width: 0px;
   }
 }
 
@@ -46,6 +48,11 @@
   max-width: 250px;
   max-height: 350px;
   position: relative;
+  overflow: hidden;
+
+  &__title {
+    word-break: break-all;
+  }
 
   &__photo {
     width: 100%;
@@ -137,7 +144,14 @@
     }
 
     input[type="number"] {
-      -moz-appearance: textfield; /* Firefox */
+      -moz-appearance: textfield; // Firefox
+    }
+  }
+
+  @media (max-width: $m-width) {
+    .catalog_filters_new_in__title,
+    .catalog_filters_filter__title {
+      font-size: 1em;
     }
   }
 }
@@ -161,7 +175,7 @@
 
   .catalog_item {
     max-width: 150px;
-    max-height: 250px;
+    height: 250px;
   }
 
   .catalog_filters_new_in,
@@ -237,11 +251,17 @@
     display: flex;
     justify-content: center;
 
-    img{
+    img {
       display: flex;
       justify-content: center;
-      height: 500px;;
-      width: 400px
+      height: 500px;
+      width: 400px;
+      border: 1px solid $charcoal;
+
+      @media (max-width: $m-width) {
+        height: 300px;
+        width: 250px;
+      }
     }
   }
 }

@@ -8,6 +8,10 @@
   z-index: 1000;
   width: 500px;
   text-align: center;
+
+  @media (max-width: $m-width) {
+    width: 300px;
+  }
 }
 
 .flash {
