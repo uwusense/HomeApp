@@ -23,6 +23,11 @@ lv:
     catalog: Katalogs
     newest_items: Jaunākie sludinājumi
     search: Meklēt lietotu mēbeļu un būvmateriālu
+    sort: 'Kārtot pēc:'
+    sort_newest: Jaunākie
+    sort_oldest: Vecākie
+    sort_price_asc: Lētakie vispirms
+    sort_price_desc: Dārgākie vispirms
     filters:
       filter: Filtrēt
       filters: Filtri

@@ -76,11 +76,11 @@
 
   .new_product__submit {
     margin-top: 50px;
-    background: #5E5DF0;
+    background: $lg-purple;
     border-radius: 999px;
-    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-shadow: $lg-purple 0 10px 20px -10px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: $white;
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;

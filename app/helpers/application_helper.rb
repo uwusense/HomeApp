@@ -23,15 +23,15 @@ module ApplicationHelper
 
   def sort_options(value, category)
     content_tag :div, class: 'sort-box-wrapper', data: { category: category, sort: value } do
-      concat content_tag(:span, 'Sort by:', class: 'sort-box-title')
+      concat content_tag(:span, t(:sort, scope: 'catalog'), class: 'sort-box-title')
       concat select_tag(
         :sort,
         options_for_select(
           [
-            ['Newest', 'newest'],
-            ['Oldest', 'oldest'],
-            ['Price ascending', 'price_asc'],
-            ['Price descending', 'price_desc']
+            [t(:sort_newest, scope: 'catalog'), 'newest'],
+            [t(:sort_oldest, scope: 'catalog'), 'oldest'],
+            [t(:sort_price_asc, scope: 'catalog'), 'price_asc'],
+            [t(:sort_price_desc, scope: 'catalog'), 'price_desc']
           ],
           selected: value
         ),

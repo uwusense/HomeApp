@@ -32,7 +32,11 @@
   }
 
   a,
-  a:active,
+  a:active {
+    color: $white;
+    text-decoration: none;
+  }
+
   a:-webkit-any-link {
     color: $white;
     text-decoration: none;

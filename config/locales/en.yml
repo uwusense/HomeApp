@@ -52,6 +52,11 @@ en:
     catalog: Catalog
     newest_items: Newest added items
     search: Search pre-owned furniture & building materials
+    sort: 'Sort by:'
+    sort_newest: Newest
+    sort_oldest: Oldest
+    sort_price_asc: Price ascending
+    sort_price_desc: Price descending
     filters:
       filter: Filter
       filters: Filters
