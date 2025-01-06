@@ -9,6 +9,7 @@ class ChatRoomService
       return { chat_room: nil, found: false, error: I18n.t(:chat_w_yourself, scope: 'flash') }
     end
 
+    # We check if chatroom with these two context members already exist
     chat_room = ChatRoom.find_by(
       '(creator_id = :creator AND participant_id = :participant) OR
        (creator_id = :participant AND participant_id = :creator)',
@@ -16,8 +17,10 @@ class ChatRoomService
       participant: @participant_id
     )
 
+    # if chatroom exists, we return it.
     return { chat_room: chat_room, found: true } if chat_room
 
+    # else we create a new one.
     chat_room = ChatRoom.create(
       creator_id: @creator_id,
       participant_id: @participant_id,

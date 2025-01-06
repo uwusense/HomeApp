@@ -13,6 +13,7 @@ class Wallet < ApplicationRecord
 
   has_many :transactions
 
+  # we wrap in a db transaction to make sure that we are processing consistently.
   def update_balance!(amount, type)
     ActiveRecord::Base.transaction do
       transactions.create!(amount: amount, transaction_type: type)

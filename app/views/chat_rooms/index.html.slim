@@ -9,6 +9,7 @@
   .chat_block
     = turbo_frame_tag "chat_block_content"
       - if @chat_room && !@chat_room.destroyed?
+        // defining style here, because of dynamic style name. (it helps us to style differently receiving and outgoing chat messages)
         style
           | .message_#{current_user.id} {
           |   display: flex;
