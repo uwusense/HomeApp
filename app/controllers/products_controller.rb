@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    # wrapping everything in db transaction, to be consistent.
     ActiveRecord::Base.transaction do
       if current_user.wallet.balance >= Product::LISTING_FEE
         if @product.save

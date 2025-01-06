@@ -30,6 +30,7 @@ class ChatRoom < ApplicationRecord
     messages.includes(:user).order(created_at: :desc).first
   end
 
+  # ajax update for partial - updates last message
   def broadcast_latest_message
     last_message = latest_message
     return unless last_message
@@ -42,6 +43,7 @@ class ChatRoom < ApplicationRecord
     )
   end
 
+  # ajax update for partial - removes draft indicator
   def broadcast_draft_update
     target = "chat_room_#{id}_draft"
     broadcast_update_to('chat_rooms',
@@ -51,6 +53,7 @@ class ChatRoom < ApplicationRecord
     )
   end
 
+  # ajax update for partial - removes draft info message
   def broadcast_draft_message_update
     target = "chat_room_#{id}_draft_message"
     broadcast_update_to('chat_rooms',

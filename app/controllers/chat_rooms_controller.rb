@@ -34,6 +34,7 @@ class ChatRoomsController < ApplicationController
     end
   end
 
+  # chat room can be deleted if user is participant or creator
   def destroy
     if current_user == @chat_room.participant || current_user == @chat_room.creator
       if @chat_room.destroy

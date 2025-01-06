@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+  # renderable block for navigaiton items
   def navigation_items
     safe_join(
       [
@@ -10,6 +12,7 @@ module ApplicationHelper
     )
   end
 
+  # renderable block for dropdown navigation items (has different styles than regular)
   def navigation_dropdown_items
     safe_join(
       [
@@ -21,6 +24,7 @@ module ApplicationHelper
     )
   end
 
+  # renderable sort options block
   def sort_options(value, category)
     content_tag :div, class: 'sort-box-wrapper', data: { category: category, sort: value } do
       concat content_tag(:span, t(:sort, scope: 'catalog'), class: 'sort-box-title')
