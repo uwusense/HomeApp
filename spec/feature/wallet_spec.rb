@@ -25,11 +25,11 @@ RSpec.describe 'Wallet', type: :feature, js: true do
 
       within('.wallet_form') do
         choose 'Citadele'
-        fill_in 'Amount', with: '20.00'
+        fill_in 'Amount', with: '150.00'
         expect { click_button 'Add funds' }.to change { Transaction.count }.by(1)
       end
 
-      expect(page).to have_content('Balance: €10,020.00')
+      expect(page).to have_content('Balance: €10,150.00')
 
       within('table') do
         expect(page).to have_selector('th', text: 'Type')
@@ -41,5 +41,23 @@ RSpec.describe 'Wallet', type: :feature, js: true do
       expect(page).to have_text('Citadele')
       expect(page).to have_text(20)
     end
+  end
+
+  it 'can top up wallet' do
+    find('.header__wallet').click
+
+    within('.wallet_form') do
+      expect(page).to have_selector("input[type='radio']", count: 2)
+      expect(page).to have_field('Amount')
+      expect(page).to have_button('Add funds')
+    end
+
+    within('.wallet_form') do
+      choose 'Citadele'
+      fill_in 'Amount', with: '-150.00'
+      expect { click_button 'Add funds' }.to change { Transaction.count }.by(0)
+    end
+
+    expect(page).to have_content('Balance: €10,000.00')
   end
 end

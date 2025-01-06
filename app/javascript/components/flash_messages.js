@@ -1,3 +1,5 @@
+// Renders flash message
+
 function setupFlash() {
   setTimeout(() => {
     const flashes = document.querySelectorAll('.flash');

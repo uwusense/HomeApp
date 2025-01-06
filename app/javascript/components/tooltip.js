@@ -1,9 +1,9 @@
-function initializeSelect2() {
+function initializeTooltip() {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 };
 
-document.addEventListener("DOMContentLoaded", initializeSelect2);
-document.addEventListener("turbo:load", initializeSelect2);
+document.addEventListener("DOMContentLoaded", initializeTooltip);
+document.addEventListener("turbo:load", initializeTooltip);

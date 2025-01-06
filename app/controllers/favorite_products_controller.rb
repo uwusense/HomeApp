@@ -2,7 +2,7 @@ class FavoriteProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @fav_products = current_user.favorited_products.page(params[:page]).per(5)
+    @fav_products = current_user.favorited_products.page(params[:page]).per(20)
   end
 
   def create

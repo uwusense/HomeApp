@@ -52,7 +52,7 @@ RSpec.describe "Catalog", type: :feature, js: true do
       find('.chat_list_item').click
 
       within('.chat_block_actions') do
-        fill_in 'message[body]', with: 'hello friend'
+        fill_in 'message[body]', with: 'Testa ziņojums'
         expect { 
           find('input[type="submit"]', match: :first).click
         }.to change { ChatRoom.first.messages.count }.by(1)
@@ -69,7 +69,7 @@ RSpec.describe "Catalog", type: :feature, js: true do
         expect(page).to have_css('.message_content')
         expect(page).to have_css('.message__title', text: user_1.username)
         expect(page).to have_css('.message__date', text: user_1.chat_rooms.first.messages.first.created_at.strftime("%d. %b. %H:%M"))
-        expect(page).to have_css('.message__body', text: 'hello friend')
+        expect(page).to have_css('.message__body', text: 'Testa ziņojums')
       end
 
       expect(user_2.chat_rooms.count).to eq(1)

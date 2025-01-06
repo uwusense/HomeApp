@@ -55,9 +55,9 @@ RSpec.describe "Product", type: :feature, js: true do
         click_on I18n.t(:start_selling, scope: 'header')
       end
 
-      fill_in 'product[name]', with: 'Sample Product'
-      fill_in 'product[price]', with: '19.99'
-      fill_in 'product[description]', with: 'This is a test product description.'
+      fill_in 'product[name]', with: 'SuperProdukts'
+      fill_in 'product[price]', with: '120.50'
+      fill_in 'product[description]', with: 'Produkts testēšanas nolūkam'
       all('.select2-container')[0].click
       find('.select2-results__option', text: 'New').click
       all('.select2-container')[1].click
@@ -82,11 +82,11 @@ RSpec.describe "Product", type: :feature, js: true do
         find("a[href='/en/products']").click
       end
 
-      expect(page).to have_text('Your products')
+      expect(page).to have_text('SuperProdukts')
       expect(page).to have_selector('.product_list table tbody tr', count: 2)
       within('.product_list table tbody') do
-        expect(page).to have_text('Sample Product', count: 2)
-        expect(page).to have_text('€19.99')
+        expect(page).to have_text('Produkts testēšanas nolūkam', count: 2)
+        expect(page).to have_text('€120.50')
         expect(page).to have_text('This is a test product description.')
         expect(page).to have_text('Doors & Windows')
         expect(page).to have_text('New')

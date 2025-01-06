@@ -1,4 +1,5 @@
 module IconHelper
+  # helper for rendering icons, icons are imported from icomoon.
   def ic_icon(icon_name, options={})
     css_class = ["icon icon-#{icon_name}"]
     css_class << options[:class]

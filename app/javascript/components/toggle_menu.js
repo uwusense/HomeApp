@@ -1,4 +1,5 @@
 class ToggleMenu {
+  // reusable dropdown functionality.
   constructor() {
     $(document).on('click', '[data-toggle-button]', (e) => this.toggleContent(e));
     $(document).on('click', (e) => this.handleClickOutside(e));

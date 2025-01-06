@@ -1,4 +1,5 @@
 function initializeSelect2() {
+  // initializing select2 dropdowns
   $('.sort-select').select2({
       minimumResultsForSearch: Infinity
   });

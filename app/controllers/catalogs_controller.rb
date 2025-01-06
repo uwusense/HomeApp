@@ -33,6 +33,7 @@ class CatalogsController < ApplicationController
     @category = params[:tab]
   end
 
+  # Sets all filters from parameters in global variable for easy access
   def set_filters
     @filters = {
       date: params[:date],
@@ -48,6 +49,7 @@ class CatalogsController < ApplicationController
     query_conditions = {}
     query_conditions[:category] = @category if @category && @category != 'new_in'
 
+    # filters last_x_days products, if option is present
     if @filters[:date].present?
       case @filters[:date]
       when 'today'
@@ -59,6 +61,7 @@ class CatalogsController < ApplicationController
       end
     end
 
+    # filters products by price condition if present
     query_conditions[:price] = {}
     query_conditions[:price][:gte] = @filters[:min_price].to_f if @filters[:min_price].present?
     query_conditions[:price][:lte] = @filters[:max_price].to_f if @filters[:max_price].present?
@@ -91,6 +94,7 @@ class CatalogsController < ApplicationController
     render json: response
   end
 
+  # users search query (by submitting term in top of page's searchbox)
   def query
     params[:query]
   end

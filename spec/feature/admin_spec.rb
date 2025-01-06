@@ -47,9 +47,9 @@ RSpec.describe 'Admin', type: :feature, js: true do
 
       expect(page).to have_selector('h1', text: 'Edit user')
 
-      fill_in 'Email', with: 'new_email@example.com'
-      fill_in 'First name', with: 'NewFirstName'
-      fill_in 'Last name', with: 'NewLastName'
+      fill_in 'Email', with: 'matiss0303@gmail.com'
+      fill_in 'First name', with: 'Matīss'
+      fill_in 'Last name', with: 'Aizgalis'
       check 'Admin'
       click_button 'Update'
 
@@ -92,8 +92,8 @@ RSpec.describe 'Admin', type: :feature, js: true do
 
       expect(page).to have_selector('h1', text: 'Edit product')
 
-      fill_in 'product[name]', with: 'New Product Name'
-      fill_in 'product[price]', with: '99.99'
+      fill_in 'product[name]', with: 'Testa produkts'
+      fill_in 'product[price]', with: '150.50'
       click_button 'Update'
 
       expect(page).to have_current_path("/en#{edit_admin_product_path(id: products.first.id)}")

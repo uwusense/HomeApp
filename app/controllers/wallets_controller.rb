@@ -2,6 +2,8 @@ class WalletsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_wallet
 
+  # wallet creates in association for user upon creation of user
+
   def index
     @transactions = @wallet.transactions.order(created_at: :desc)
   end

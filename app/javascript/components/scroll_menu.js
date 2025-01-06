@@ -7,6 +7,7 @@ class ScrollMenu {
     { width: 0, itemsToShow: 1 }
   ];
 
+  // Products margin-right in page view. This gets calculated in for scroll option.
   static RIGHTMARGIN = 10;
 
   constructor($scrollMenu) {
@@ -27,6 +28,7 @@ class ScrollMenu {
     $(window).on('resize', () => this.initOnResize());
   }
 
+  // If user resizes page, we reinitialize our scroll menu to adjust buttons and items.
   initOnResize() {
     this.currentItemsToShow = this.getItemsToShow();
     this.scrollContentWidth = this.$scrollContent.width();
@@ -39,6 +41,7 @@ class ScrollMenu {
     this.scrollTo();
   }
 
+  // event binder upon scroll click
   scrollTo() {
     this.$buttons.off('click').on('click', (event) => {
       if (this.isScrolling) return;
@@ -52,6 +55,7 @@ class ScrollMenu {
     });
   }
 
+  // scroll functionallity by pressing scroll "<", ">" buttons
   handleArrowScrollButton($button) {
     this.isScrolling = true;
     const direction = $button.data('arrow');
@@ -71,6 +75,7 @@ class ScrollMenu {
     }, 400);
   }
 
+  // scroll functonallity by pressing scroll "1","2","3",".." buttons
   handleRegularScrollButton($button) {
     this.isScrolling = true;
     this.$buttons.removeClass('scroll_menu__button--active');
@@ -86,6 +91,7 @@ class ScrollMenu {
     }, 400);
   }
 
+  // returns count of items to show according to page size
   getItemsToShow() {
     let itemsToShow = 1;
     for (let breakpoint of ScrollMenu.BREAKPOINTS) {
@@ -101,6 +107,7 @@ class ScrollMenu {
     this.$scrollContent.children().css('width', `${this.itemWidth}px`);
   }
 
+  // When items to display count is 2, we replace "1,2,3,4" buttons with arrows. 
   updateButtons() {
     const numButtons = Math.ceil(this.itemsCount / this.currentItemsToShow);
     this.$buttonsContainer.empty();

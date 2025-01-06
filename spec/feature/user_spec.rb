@@ -12,9 +12,9 @@ RSpec.describe 'User', type: :feature, js: true do
 
     it 'allows a user to register' do
       fill_in 'user[email]', with: 'test@test.com'
-      fill_in 'user[username]', with: 'test1'
-      fill_in 'user[first_name]', with: 'Testeris'
-      fill_in 'user[last_name]', with: 'Testeris'
+      fill_in 'user[username]', with: 'aizgamat'
+      fill_in 'user[first_name]', with: 'Matīss'
+      fill_in 'user[last_name]', with: 'Aizgalis'
       fill_in 'user[password]', with: 'test123'
       fill_in 'user[password_confirmation]', with: 'test123'
   
@@ -25,7 +25,7 @@ RSpec.describe 'User', type: :feature, js: true do
     end
   
     it 'shows error messages for invalid inputs' do
-      fill_in 'user[email]', with: 'user@example'
+      fill_in 'user[email]', with: 'test@test.com'
       click_button 'Register'
   
       expect(page).to have_content("Password can't be blank")
@@ -34,10 +34,10 @@ RSpec.describe 'User', type: :feature, js: true do
     it 'shows error about non-unique email and username' do
       fill_in 'user[email]', with: 'unique@test.com'
       fill_in 'user[username]', with: 'uniqueuser'
-      fill_in 'user[first_name]', with: 'Tester'
-      fill_in 'user[last_name]', with: 'Testing'
-      fill_in 'user[password]', with: 'test1234'
-      fill_in 'user[password_confirmation]', with: 'test1234'
+      fill_in 'user[first_name]', with: 'Matīss'
+      fill_in 'user[last_name]', with: 'Aizgalis'
+      fill_in 'user[password]', with: 'test123'
+      fill_in 'user[password_confirmation]', with: 'test123'
   
       click_button 'Register'
   
@@ -67,7 +67,7 @@ RSpec.describe 'User', type: :feature, js: true do
 
     it 'prevents user from signin with wrong credentials' do
       fill_in 'user[email]', with: user.email
-      fill_in 'user[password]', with: 'wrongpassword'
+      fill_in 'user[password]', with: 'nederiga123'
 
       click_button 'Sign in'
 
@@ -102,8 +102,8 @@ RSpec.describe 'User', type: :feature, js: true do
       open_email(user.email)
       current_email.click_link 'Change my password'
 
-      fill_in 'user[password]', with: 'newpassword123'
-      fill_in 'user[password_confirmation]', with: 'newpassword123'
+      fill_in 'user[password]', with: 'test321'
+      fill_in 'user[password_confirmation]', with: 'test321'
       click_button 'Change my password'
 
       # Invalid token because of tests.

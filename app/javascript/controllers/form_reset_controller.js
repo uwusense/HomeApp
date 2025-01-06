@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-
+// Chat room form reset functionality upon creation of message. (When sending message we reset form)
 export default class extends Controller {
   static targets = ["submit", "input"]
 
