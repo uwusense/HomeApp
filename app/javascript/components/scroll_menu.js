@@ -55,7 +55,7 @@ class ScrollMenu {
     });
   }
 
-  // scroll functionallity by pressing scroll "<", ">" buttons
+  // scroll functionality by pressing scroll "<", ">" buttons
   handleArrowScrollButton($button) {
     this.isScrolling = true;
     const direction = $button.data('arrow');
@@ -75,7 +75,7 @@ class ScrollMenu {
     }, 400);
   }
 
-  // scroll functonallity by pressing scroll "1","2","3",".." buttons
+  // scroll functionality by pressing scroll "1","2","3",".." buttons
   handleRegularScrollButton($button) {
     this.isScrolling = true;
     this.$buttons.removeClass('scroll_menu__button--active');
