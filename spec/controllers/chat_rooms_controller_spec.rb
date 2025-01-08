@@ -20,19 +20,20 @@ RSpec.describe ChatRoomsController, type: :controller do
 
     context 'when successfuly creates a chatroom' do
       it 'redirects to chat room with flash' do
-        expect {
+        expect do
           post :create, params: { participant_id: other_user.id }
-        }.to change(ChatRoom, :count).by(1)
+        end.to change(ChatRoom, :count).by(1)
         expect(response).to redirect_to(chat_room_path(ChatRoom.last.id))
         expect(flash[:notice]).to eq('Chat room created successfully')
       end
     end
 
     context 'when creation of chat room fails' do
-      let(:product) { create(:product)}
+      let(:product) { create(:product) }
 
-      it "redirects to catalog with flash" do
-        allow_any_instance_of(ChatRoomService).to receive(:find_or_create_chat_room).and_return({chat_room: nil, error: 'Some error'})
+      it 'redirects to catalog with flash' do
+        allow_any_instance_of(ChatRoomService).to receive(:find_or_create_chat_room).and_return({ chat_room: nil,
+                                                                                                  error: 'Some error' })
         post :create, params: { participant_id: other_user.id, product_id: product.id }
         expect(response).to redirect_to(catalog_path(product))
         expect(flash[:alert]).to eq('Failed to create a chat room')
@@ -55,7 +56,7 @@ RSpec.describe ChatRoomsController, type: :controller do
 
     context 'when user is not authorized' do
       let!(:chat_room) { create(:chat_room, creator: user, participant: other_user) }
-      
+
       it 'redirects to login page with flash' do
         delete :destroy, params: { id: chat_room.id }
         expect(response).to redirect_to(new_user_session_path)

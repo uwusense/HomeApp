@@ -41,7 +41,7 @@ RSpec.describe CatalogsController, type: :controller do
 
     context 'when the product does not exist' do
       it 'redirects to index with error message' do
-        get :show, params: { id: 99999 }
+        get :show, params: { id: 99_999 }
         expect(response).to redirect_to(catalogs_path)
         expect(flash[:error]).to match(/Item not found/)
       end

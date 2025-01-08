@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Admin', type: :feature, js: true do
   let(:admin) { create(:user, :admin, username: 'admin') }
   let(:user) { create(:user) }
-  let!(:product) { create_list(:product, 5, user: user) }
+  let!(:product) { create_list(:product, 5, user:) }
 
   describe 'when user is admin' do
     let(:users) { User.all }
@@ -19,15 +19,14 @@ RSpec.describe 'Admin', type: :feature, js: true do
       end
 
       expect(page).to have_selector('h1', text: 'All users')
-    
+
       within 'table' do
         expect(page).to have_selector('th', text: 'Email')
         expect(page).to have_selector('th', text: 'Name')
         expect(page).to have_selector('th', text: 'Admin')
         expect(page).to have_selector('th', text: '')
-        
         expect(page).to have_selector('tr', count: users.count + 1)
-        binding.pry
+
         users.each do |user|
           expect(page).to have_text(user.email)
           expect(page).to have_text("#{user.first_name} #{user.last_name}")
@@ -56,7 +55,7 @@ RSpec.describe 'Admin', type: :feature, js: true do
       expect(page).to have_current_path("/en#{edit_admin_user_path(id: users.first.id)}")
       expect(page).to have_text('User updated successfully')
     end
-    
+
     it 'shows all products' do
       find('a[href="/en"][data-toggle-button="#profile_menu_box"][data-toggle-class=".profile_menu--active"]').click
 
@@ -65,14 +64,14 @@ RSpec.describe 'Admin', type: :feature, js: true do
       end
 
       expect(page).to have_selector('h1', text: 'All products')
-    
+
       within 'table' do
         expect(page).to have_selector('th', text: 'Name')
         expect(page).to have_selector('th', text: 'Price')
         expect(page).to have_selector('th', text: '')
-        
+
         expect(page).to have_selector('tr', count: products.count + 1)
-        
+
         products.each do |product|
           expect(page).to have_text(product.name)
           expect(page).to have_text("€#{product.price}")

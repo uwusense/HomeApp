@@ -17,17 +17,17 @@ RSpec.describe 'User', type: :feature, js: true do
       fill_in 'user[last_name]', with: 'Aizgalis'
       fill_in 'user[password]', with: 'test123'
       fill_in 'user[password_confirmation]', with: 'test123'
-  
+
       click_button 'Register'
-  
+
       expect(page).to have_text('Welcome! You have signed up successfully.')
       expect(current_path).to eq("#{root_path}en")
     end
-  
+
     it 'shows error messages for invalid inputs' do
       fill_in 'user[email]', with: 'test@test.com'
       click_button 'Register'
-  
+
       expect(page).to have_content("Password can't be blank")
     end
 
@@ -38,9 +38,9 @@ RSpec.describe 'User', type: :feature, js: true do
       fill_in 'user[last_name]', with: 'Aizgalis'
       fill_in 'user[password]', with: 'test123'
       fill_in 'user[password_confirmation]', with: 'test123'
-  
+
       click_button 'Register'
-  
+
       expect(page).to have_content('Email has already been taken')
       expect(page).to have_content('Username has already been taken')
     end
@@ -81,7 +81,7 @@ RSpec.describe 'User', type: :feature, js: true do
   end
 
   describe 'Reset password' do
-    let!(:user) { create(:user, email: "user@example.com") }
+    let!(:user) { create(:user, email: 'user@example.com') }
 
     before do
       ActionMailer::Base.deliveries.clear

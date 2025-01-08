@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Catalog", type: :feature, js: true do
+RSpec.describe 'Catalog', type: :feature, js: true do
   let(:user_1) { create(:user) }
   let(:user_2) { create(:user, username: 'Test_username_2') }
   let!(:product_1) { create(:product, user: user_1) }
@@ -53,22 +53,23 @@ RSpec.describe "Catalog", type: :feature, js: true do
 
       within('.chat_block_actions') do
         fill_in 'message[body]', with: 'Testa ziņojums'
-        expect { 
+        expect do
           find('input[type="submit"]', match: :first).click
-        }.to change { ChatRoom.first.messages.count }.by(1)
+        end.to change { ChatRoom.first.messages.count }.by(1)
       end
 
       within('.chat_block_actions') do
         fill_in 'message[body]', with: ''
-        expect {
+        expect do
           find('input[type="submit"]', match: :first).click
-        }.to change { ChatRoom.first.messages.count }.by(0)
+        end.to change { ChatRoom.first.messages.count }.by(0)
       end
 
       within('.chat_block_communication') do
         expect(page).to have_css('.message_content')
         expect(page).to have_css('.message__title', text: user_1.username)
-        expect(page).to have_css('.message__date', text: user_1.chat_rooms.first.messages.first.created_at.strftime("%d. %b. %H:%M"))
+        expect(page).to have_css('.message__date',
+                                 text: user_1.chat_rooms.first.messages.first.created_at.strftime('%d. %b. %H:%M'))
         expect(page).to have_css('.message__body', text: 'Testa ziņojums')
       end
 
@@ -96,7 +97,7 @@ RSpec.describe "Catalog", type: :feature, js: true do
       within('.chat_block') do
         within('.chat_block_header') do
           expect(page).to have_button('Delete')
-          
+
           accept_confirm do
             click_button 'Delete'
           end
@@ -126,7 +127,7 @@ RSpec.describe "Catalog", type: :feature, js: true do
 
       expect(page).to have_no_text('Contact with seller')
       click_on 'Login for more actions'
-      expect(page).to have_current_path("/en/users/sign_in")
+      expect(page).to have_current_path('/en/users/sign_in')
     end
   end
 end

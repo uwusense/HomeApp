@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "Catalog", type: :feature, js: true do
+RSpec.describe 'Catalog', type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do
-    create_list(:product, 2, price: 50, user: user, condition: 'used')
-    create_list(:product, 1, price: 100, user: user, condition: 'new', name: 'Expensive one')
+    create_list(:product, 2, price: 50, user:, condition: 'used')
+    create_list(:product, 1, price: 100, user:, condition: 'new', name: 'Expensive one')
     login(user)
     visit catalogs_path(tab: 'doors_windows')
   end
 
-  describe 'filters'do
+  describe 'filters' do
     it 'allows users to filter products by price' do
       within('.catalog_filters_wrapper') do
         fill_in 'min_price', with: '25'
@@ -51,13 +51,13 @@ RSpec.describe "Catalog", type: :feature, js: true do
     it 'allows a user to favorite and unfavorite a product' do
       expect(user.reload.favorited_products.count).to eq(0)
 
-      within("#items_list") do
+      within('#items_list') do
         first('.favorite_icon').click
       end
       expect(page).to have_css('.favorite_icon--favorited')
       expect(user.reload.favorited_products.count).to eq(1)
 
-      within("#items_list") do
+      within('#items_list') do
         find('.favorite_icon--favorited').click
       end
       expect(page).to have_css('.favorite_icon')
@@ -69,9 +69,8 @@ RSpec.describe "Catalog", type: :feature, js: true do
     let(:product) { Product.where(name: 'Expensive one').first }
 
     it 'displays the product details' do
-      binding.pry
       find('.catalog_item__title', text: product.name).click
-      expect(page).to have_current_path(catalog_path(id: product.id))
+      expect(page).to have_current_path("/en#{catalog_path(id: product.id)}")
       within('.main_product_wrapper') do
         expect(page).to have_content(product.name)
         expect(page).to have_content(product.description)

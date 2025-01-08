@@ -24,11 +24,11 @@ RSpec.describe Wallet, type: :model do
 
     context 'when transaction is valid' do
       it 'creates a transaction and updates the balance' do
-        expect {
+        expect do
           wallet.update_balance!(amount, transaction_type)
-        }.to change(Transaction, :count).by(1)
-        .and change { wallet.reload.balance }.by(amount)
-        
+        end.to change(Transaction, :count).by(1)
+                                          .and change { wallet.reload.balance }.by(amount)
+
         last_transaction = Transaction.last
         expect(last_transaction.amount.to_f).to eq(amount)
         expect(last_transaction.transaction_type).to eq(transaction_type)
