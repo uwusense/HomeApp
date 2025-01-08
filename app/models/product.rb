@@ -30,12 +30,12 @@ class Product < ApplicationRecord
     doors_windows
   ].freeze
 
-  CONDITIONS = %W[ new like_new used ].freeze
-  LISTING_TYPE = %w[ sell rent ].freeze
+  CONDITIONS = %w[new like_new used].freeze
+  LISTING_TYPE = %w[sell rent].freeze
   LISTING_FEE = 0.30
 
   has_many_attached :photos
-  has_many :favorited_products, class_name: 'FavoriteProduct'
+  has_many :favorited_products, class_name: 'FavoriteProduct', dependent: :destroy
   has_many :favorited_by, through: :favorited_products, source: :user
 
   belongs_to :user
