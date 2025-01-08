@@ -4,6 +4,7 @@ class ChatRoomService
     @participant_id = participant_id
   end
 
+  # rubocop:disable Style/HashSyntax
   def find_or_create_chat_room
     if @creator_id == @participant_id
       return { chat_room: nil, found: false, error: I18n.t(:chat_w_yourself, scope: 'flash') }
@@ -33,4 +34,5 @@ class ChatRoomService
       { chat_room: nil, found: false, error: chat_room.errors.full_messages }
     end
   end
+  # rubocop:enable Style/HashSyntax
 end
