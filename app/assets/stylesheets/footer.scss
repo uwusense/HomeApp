@@ -1,16 +1,12 @@
 @import 'variables';
 
 .footer_wrapper {
-  display: flex;
-  color: $white;
-  margin-left: 200px;
-  height: 100%;
   align-items: center;
+  color: $white;
+  display: flex;
+  height: 100%;
+  margin-left: 200px;
   margin-top: 15px;
-
-  .policy {
-
-  }
 
   .about {
     margin-left: 100px;

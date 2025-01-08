@@ -2,18 +2,18 @@
 
 .newest_items__title {
   h1 {
-    font-weight: 400;
     font-size: 1.5em;
-    margin-top: 25px;
+    font-weight: 400;
     margin-bottom: 0px;
+    margin-top: 25px;
   }
 }
 
 .scroll_menu_delimiter {
-  height: 20px;
-  width: calc(100% - 10px);
   background-color: $charcoal;
+  height: 20px;
+  margin: 10px;
   position: relative;
   right: 5px;
-  margin: 10px;
+  width: calc(100% - 10px);
 }

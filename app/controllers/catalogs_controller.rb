@@ -21,11 +21,11 @@ class CatalogsController < ApplicationController
   def set_items
     query_conditions = apply_filters
 
-    if query.present?
-      @items = Product.search(query, where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
-    else
-      @items = Product.search("*", where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
-    end
+    @items = if query.present?
+               Product.search(query, where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
+             else
+               Product.search('*', where: query_conditions, includes: [:user], page: params[:page], per_page: 20)
+             end
     @items = apply_sorting(@items)
   end
 
@@ -66,7 +66,10 @@ class CatalogsController < ApplicationController
     query_conditions[:price][:gte] = @filters[:min_price].to_f if @filters[:min_price].present?
     query_conditions[:price][:lte] = @filters[:max_price].to_f if @filters[:max_price].present?
 
-    query_conditions[:condition] = @filters[:condition] if @filters[:condition].present? && @filters[:condition] != 'all'
+    if @filters[:condition].present? && @filters[:condition] != 'all'
+      query_conditions[:condition] =
+        @filters[:condition]
+    end
 
     query_conditions
   end

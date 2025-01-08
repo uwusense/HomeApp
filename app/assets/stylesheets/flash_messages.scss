@@ -1,13 +1,13 @@
 @import 'variables';
 
 .flash-messages {
-  position: fixed;
-  top: 25px;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: 500px;
+  position: fixed;
   text-align: center;
+  top: 25px;
+  transform: translateX(-50%);
+  width: 500px;
+  z-index: 1000;
 
   @media (max-width: $m-width) {
     width: 300px;
@@ -15,12 +15,12 @@
 }
 
 .flash {
+  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
   margin-bottom: 10px;
   padding: 15px;
-  border-radius: 5px;
-  font-size: 14px;
-  color: white;
-  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s;
 }
 
 .flash.success {

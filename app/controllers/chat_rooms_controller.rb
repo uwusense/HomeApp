@@ -14,7 +14,6 @@ class ChatRoomsController < ApplicationController
     @message = Message.new
     @messages = @chat_room.messages.order(created_at: :asc)
     render 'index'
-
   rescue ActiveRecord::RecordNotFound
     flash[:error] = t(:chat_room_not_found, scope: 'flash')
     render 'index'

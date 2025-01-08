@@ -1,12 +1,12 @@
 @import 'variables';
 
 .navigation__wrapper {
+  align-items: center;
   background-color: $cocoa;
   color: $white;
   display: flex;
-  align-items: center;
-  width: 100%;
   padding: 10px 0;
+  width: 100%;
 
   .navigation__items {
     display: flex;
@@ -18,12 +18,12 @@
   }
 
   .navigation__item {
+    align-items: center;
     cursor: pointer;
-    margin-right: 20px;
-    padding: 5px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-right: 20px;
+    padding: 5px;
     text-wrap: nowrap;
 
     &:hover {
@@ -53,23 +53,23 @@
   }
 
   .navigation__actions {
-    display: flex;
     align-items: center;
+    display: flex;
     float: right;
-    margin-right: 40px;
-    margin-left: 20px;
     height: 42px;
+    margin-left: 20px;
+    margin-right: 40px;
 
     a, button {
+      border: none;
       color: $white;
       padding-right: 10px;
-      border: none;
       text-decoration: none;
     }
 
     .navigation__language {
-      display: flex;
       align-items: center;
+      display: flex;
       font-weight: 700;
 
       &--en,
@@ -85,13 +85,13 @@
 }
 
 .navigation_dropdown__wrapper {
-  display: none;
+  background-color: $white;
   box-shadow: 0 1px 5px $black;
-  position: absolute;
+  display: none;
   left: 0;
+  position: absolute;
   width: 400px;
   z-index: 5;
-  background-color: $white;
 }
 
 .navigation_dropdown__content {
@@ -99,8 +99,8 @@
   flex-direction: column;
 
   .navigation_dropdown__item {
-    padding: 10px 20px 10px 20px;
     font-size: 1.2em;
+    padding: 10px 20px 10px 20px;
 
     &:hover {
       background-color: $light-gray;
@@ -122,8 +122,8 @@
     }
 
     .navigation__actions {
-      margin-right: 20px;
       margin-left: auto;
+      margin-right: 20px;
     }
   }
 }

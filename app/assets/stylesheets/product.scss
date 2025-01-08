@@ -1,10 +1,10 @@
 @import 'variables';
 
 .new_product_wrapper {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding-bottom: 50px;
 
   .new_product_form_wrapper {
@@ -55,8 +55,8 @@
   }
 
   #product_name {
-    width: 300px;
     height: 25px;
+    width: 300px;
   }
 
   #product_price {
@@ -75,9 +75,10 @@
   }
 
   .new_product__submit {
-    margin-top: 50px;
+    -webkit-user-select: none;
     background: $lg-purple;
     border-radius: 999px;
+    border: 0;
     box-shadow: $lg-purple 0 10px 20px -10px;
     box-sizing: border-box;
     color: $white;
@@ -85,23 +86,22 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
+    margin-top: 50px;
     opacity: 1;
     outline: 0 solid transparent;
     padding: 8px 38px;
-    user-select: none;
-    -webkit-user-select: none;
     touch-action: manipulation;
+    user-select: none;
     width: fit-content;
     word-break: break-word;
-    border: 0;
   }
 }
 
 .product_list {
   .default_button {
-    padding: 3px;
     font-size: 0.75em;
     margin: 0 10px;
+    padding: 3px;
 
     &--green {
       background-color: $white;
@@ -118,13 +118,13 @@
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 
 th, td {
-  padding: 10px;
   border: 1px solid #ddd;
+  padding: 10px;
   text-align: left;
 }
 

@@ -1,16 +1,16 @@
 @import 'variables';
 
 .custom-tooltip {
+  background-color: $white;
+  border-radius: 5px;
   border: 1px solid $black;
   padding: 5px;
-  border-radius: 5px;
-  background-color: $white;
 }
 
 .tooltip-info {
   background-color: transparent;
-  border: 1px solid $cherry-red;
   border-radius: 25px;
+  border: 1px solid $cherry-red;
   color: $cherry-red;
   font-size: 1em;
   font-weight: 700;
