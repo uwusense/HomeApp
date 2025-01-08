@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  # rubocop:disable Style/HashSyntax
   # renderable block for navigaiton items
   def navigation_items
     safe_join(
@@ -25,8 +25,8 @@ module ApplicationHelper
   end
 
   # renderable sort options block
-  def sort_options(value, category)
-    content_tag :div, class: 'sort-box-wrapper', data: { category: category, sort: value } do
+  def sort_options(value)
+    content_tag :div, class: 'sort-box-wrapper', data: { controller: 'select2', sort: value } do
       concat content_tag(:span, t(:sort, scope: 'catalog'), class: 'sort-box-title')
       concat select_tag(
         :sort,
@@ -45,4 +45,6 @@ module ApplicationHelper
       )
     end
   end
+
+  # rubocop:enable Style/HashSyntax
 end

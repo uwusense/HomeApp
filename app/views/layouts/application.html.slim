@@ -5,7 +5,7 @@ html
     = render 'layouts/header/header'
   
   body
-    .flash-messages
+    .flash-messages data-controller='flash-message'
       - flash.each do |key, message|
         .flash class="#{key}" = message
     .container

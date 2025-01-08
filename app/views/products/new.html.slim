@@ -18,7 +18,7 @@
           = f.label :description, t(:description, scope: 'products')
           = f.text_area :description, maxlength: 500, placeholder: t(:enter_description, scope: 'products')
 
-      .new_product_form_right
+      .new_product_form_right data-controller='select2'
         .form-group
           = f.label :condition, t(:condition, scope: 'products')
           = f.select :condition, options_for_select(Product::CONDITIONS.map { |c| [t(c, scope: 'products'), c] }), { include_blank: true }, { class: 'select2', data: { placeholder: t(:choose_condition, scope: 'products') } }

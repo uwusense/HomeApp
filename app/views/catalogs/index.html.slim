@@ -5,7 +5,7 @@
 .catalog_wrapper data-category=@category data-sort=@sort_direction
   = render partial: 'filters'
   .catalog_wrapper--right
-    = sort_options(@sort_direction, @category)
+    = sort_options(@sort_direction)
     .catalog_items_wrapper
       .hidden.catalog_items__loading
         .loading-indicator
